@@ -1,0 +1,225 @@
+.gradient-border-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2px; /* border size */
+  border-radius: 100px;
+  background: linear-gradient(
+    140deg,
+    rgba(201, 2, 133, 1),
+    rgba(1, 96, 105, 1)
+  );
+
+  /* Needed for masking the inner content */
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  box-shadow: 0px 0px 50px rgba(255, 255, 255, 0.12);
+  width: 100%;
+  max-width: 240px;
+}
+
+.gradient-border-button .btn-text {
+  padding: 14px 20px;
+  border-radius: 100px;
+  background: rgb(0, 11, 12); /* inner background */
+  color: #edf8f9;
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  flex: auto;
+}
+
+.bg-linier-custom {
+  background: linear-gradient(
+    150deg,
+    rgb(201 2 133 / 60%) -44%,
+    rgba(92, 108, 174, 1) 55%,
+    rgba(9, 189, 205, 100%) 200%
+  );
+}
+
+.gradient-stroke-button {
+  position: relative;
+  padding: 16px 20px;
+  border: none;
+  background: transparent;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  z-index: 0;
+  overflow: hidden;
+  width: 240px;
+  height: 51px;
+}
+
+.gradient-stroke-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 200px;
+  padding: 2px;
+  background: linear-gradient(
+    160deg,
+    rgba(201, 2, 131, 0.5) 50%,
+    rgb(1, 96, 105, 0.5) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  z-index: -1;
+}
+.gradient-stroke-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Bisa diubah ke transparent atau warna lain */
+  border-radius: 200px;
+  z-index: -2;
+}
+
+.neon-button {
+  position: relative;
+  padding: 12px 24px;
+  border: none;
+  background-color: #000; /* warna isi tombol */
+  color: white;
+  font-weight: bold;
+  border-radius: 12px;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.neon-button::before {
+  content: "";
+  position: absolute;
+  inset: -3px; /* agar efek keluar dari tombol */
+  border-radius: 14px;
+  background: linear-gradient(45deg, #c90285 60%, #016069 100%);
+  filter: blur(8px);
+  z-index: -2;
+}
+
+.neon-button::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: #000; /* isi tombol */
+  border-radius: 12px;
+  z-index: -1;
+}
+
+.md-stepper-horizontal {
+  padding: 0 24px;
+  .md-step {
+    display: table-cell;
+    position: relative;
+    padding: 24px 0;
+  }
+}
+
+.numbering {
+  background: linear-gradient(155.39deg, #c90285 -112.39%, #09bdcd 165.05%),
+    #09bdcd;
+  border-radius: 200px;
+  width: 37px;
+  height: 37px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 10px;
+  left: -10px;
+}
+
+.md-step {
+  position: relative;
+}
+.last::after {
+  display: none;
+}
+.md-step::after {
+  content: "";
+  position: absolute;
+  top: 65px; /* atau sesuaikan */
+  left: 100%; /* garis dimulai dari ujung kanan */
+  width: 150px; /* panjang antar step */
+  height: 3px;
+  background: var(--intuise-color-primary-2);
+  z-index: -1; /* biar ada di belakang konten */
+}
+
+// .bar {
+//   background: var(--intuise-color-primary-2);
+//   height: 3px;
+//   width: 100%;
+//   bottom: 50%;
+//   top: 65px;
+// }
+
+.md-stepper-horizontal .md-step .md-step-circle {
+  width: 80px;
+  height: 80px;
+}
+.md-stepper-horizontal .md-step .md-step-circle {
+  border: 3px solid var(--intuise-color-primary-2);
+  border-radius: 200px;
+  place-content: center;
+  justify-items: center;
+  background-color: #000b0c;
+}
+
+@media (max-width: 767px) {
+  .mobile-inherit-width {
+    width: inherit;
+  }
+}
+
+.toggle-switch {
+  height: 48px;
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  border-radius: 200px;
+  input {
+    display: none;
+    padding: 10px 20px;
+    &:checked + .slider {
+    }
+    &:checked + .slider::after {
+      -webkit-transform: translateX(48px);
+      -ms-transform: translateX(48px);
+      transform: translateX(48px);
+    }
+  }
+  .slider {
+    &:hover {
+      cursor: pointer;
+    }
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--intuise-color-text-primary);
+    border-radius: 100px;
+    transition: 250ms;
+    padding: 0 14px;
+    &::after {
+      position: absolute;
+      border-radius: 200px;
+      content: "";
+      height: 36px;
+      width: 36px;
+      background-color: white;
+      left: 6px;
+      bottom: 6px;
+      transition: 250ms;
+    }
+  }
+}

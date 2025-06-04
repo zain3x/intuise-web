@@ -1,1 +1,24 @@
-/* You can add global styles to this file, and also import other style files */
+@use "tailwindcss" as *;
+@use "./variable.scss";
+
+/* Scrollbar container */
+::-webkit-scrollbar {
+  width: 6px;       /* Atur lebar scrollbar */
+  height: 6px;      /* Untuk horizontal scrollbar */
+}
+
+/* Scrollbar track (background) */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Scrollbar thumb (yang bisa digeser) */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3); /* Bisa diubah warnanya */
+  border-radius: 10px;
+}
+
+/* Optional: Hover effect */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
