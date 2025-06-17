@@ -254,12 +254,14 @@
       class="w-full flex justify-center items-center gap-5 opacity-60 flex-wrap md:flex-nowrap"
     >
       @for (item of ourClient; track $index) {
-      <img
-        class="md:w-[200px] w-[150px] max-w-full object-contain h-[50px]"
-        [id]="$index + 1"
-        [src]="item.img"
-        alt=""
-      />
+        <a routerLink="/proj/web-sanlog">
+          <img
+            class="md:w-[200px] w-[150px] max-w-full object-contain h-[50px]"
+            [id]="$index + 1"
+            [src]="item.img"
+            alt=""
+          />
+        </a>
       }
     </div>
   </section>
