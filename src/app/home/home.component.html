@@ -1,7 +1,7 @@
 <main class="flex flex-col gap-[60px] md:gap-[300px]">
   <!-- #region INTUITIVE UI FOR YOUR APPS -->
   <section
-    class="px-[16px] md:px-[100px] w-full bg-cover bg-center bg-no-repeat content-center"
+    class="px-[32px] md:px-[100px] w-full bg-cover bg-center bg-no-repeat content-center"
     style="
       background-attachment: fixed;
       height: calc(100vh - 80px);
@@ -20,21 +20,28 @@
         url('/assets/background.png');
     "
   >
-    <div class="flex flex-row gap-10">
-      <div class="flex flex-col gap-[40px]">
+    <div class="flex flex-col gap-10 pt-[40px] md:pt-0 md:flex-row">
+      <div
+        class="flex flex-col items-center justify-center md:gap-[40px] gap-[20px] md:items-start md:justify-start"
+      >
         <h1
-          class="uppercase text-[24px] md:text-[48px] lg:text-[64px] font-bold font-['Work_Sans']"
+          class="text-center md:text-start uppercase text-[24px] md:text-[48px] lg:text-[64px] font-bold font-['Work_Sans']"
         >
           <span class="text-(--intuise-color-primary)">INTUITIVE</span>
           <span class="text-white"> UI For </span><br />
           <span
-            class="text-white border-b-4 pb-6"
+            class="text-white border-b-0 md:border-b-4 pb-0 md:pb-6"
             style="border-color: var(--intuise-color-primary)"
-            >Your Apps</span
           >
+            Your Apps
+          </span>
         </h1>
+        <div
+          class="block md:hidden w-full h-[4px]"
+          style="background-color: var(--intuise-color-primary)"
+        ></div>
         <p
-          class="text-wrap text-base text-(--intuise-color-text-secondary) font-['Inter'] font-medium"
+          class="text-center md:text-start text-wrap text-base text-(--intuise-color-text-secondary) font-['Inter'] font-medium"
         >
           Torem ipsum dolor sit amet, consectetur adipiscing elit.Torem ipsum
           dolor sit amet, consectetur adipiscing elit.Torem ipsum dolor sit
@@ -45,8 +52,12 @@
           <span class="btn-text">Read More</span>
         </div>
       </div>
-      <div class="hidden md:block">
-        <img src="/assets/iphone-showcase.png" alt="" />
+      <div class="py-[40px] justify-center flex md:py-0">
+        <img
+          class="h-[300px] md:h-auto"
+          src="/assets/iphone-showcase.png"
+          alt=""
+        />
       </div>
     </div>
   </section>
@@ -66,7 +77,7 @@
     <div
       class="overflow-x-auto snap-x snap-mandatory scroll-smooth px-4 mobile-inherit-width"
     >
-      <div class="flex gap-4 w-max">
+      <div class="flex md:flex-row flex-col gap-4 w-full md:w-max">
         @for (item of browse.slice(0, 3); track item.id){
         <div
           class="relative shrink-0 snap-center h-full rounded-xl flex items-center font-bold"
@@ -90,7 +101,11 @@
               {{ item.desc }}
             </p>
           </div>
-          <img class="h-[300px]" [src]="item.image" alt="" />
+          <img
+            class="w-full object-cover object-top h-[220px] md:h-[300px]"
+            [src]="item.image"
+            alt=""
+          />
         </div>
         }
       </div>
@@ -118,15 +133,20 @@
       libero et velit interdum, ac aliquet odio mattis. Class aptent taciti
       sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</P
     >
-    <div class="flex flex-wrap gap-4">
-      @for (item of solution; track $index) {
+    <div
+      class="grid grid-cols-2 gap-4 justify-items-center md:flex md:flex-wrap"
+    >
+      @for (item of solution; let i = $index; track $index) {
       <div
-        class="flex-1 overflow-hidden flex flex-col gap-[12px] min-w-[300px] rounded-[20px] bg-[rgba(93,93,93,0.1)] p-5"
+        class="overflow-hidden flex flex-col gap-[12px] rounded-[20px] bg-[rgba(93,93,93,0.1)] p-5 md:min-w-[300px] md:flex-1"
+        [ngClass]="{
+          'col-span-2': i === solution.length - 1
+        }"
         id="card"
       >
         <img [src]="item.icon" alt="icon" class="w-8 h-8" />
         <p
-          class="font-['Work_Sans'] text-2xl uppercase font-bold text-[#EDF8F9]"
+          class="font-['Work_Sans'] md:text-2xl uppercase font-bold text-[#EDF8F9]"
         >
           {{ item.title }}
         </p>
@@ -157,21 +177,23 @@
     </h1>
     <!-- #region STEPPER -->
     <div
-      class="md-stepper-horizontal relative flex gap-[150px] overflow-x-auto md:overflow-visible mobile-inherit-width"
+      class="md-stepper-horizontal relative flex gap-18 md:gap-[150px] place-content-center md:overflow-x-auto md:overflow-visible mobile-inherit-width"
     >
       <div class="bar absolute shrink-0"></div>
       @for (item of [1,2,3,4]; track $index;) {
       <div class="md-step shrink-0" [ngClass]="{ last: $last }">
-        <div class="w-[80px]">
+        <div class="flex md:block flex-col items-center w-[21px] md:w-[80px]">
           <div class="numbering text-white absolute">1</div>
           <div class="md-step-circle">
             <img
-              class="w-[45px] h-[45px]"
+              class="items-center w-[21px] h-[21px] md:w-[45px] md:h-[45px]"
               src="/assets/competitive_research.svg"
               alt=""
             />
           </div>
-          <div class="md-step-title text-white text-center">
+          <div
+            class="w-fit text-center smd-step-title text-white text-center md:text-[14px] text-sm"
+          >
             Competitive Research
           </div>
         </div>
@@ -181,16 +203,17 @@
       }
     </div>
     <!-- #endregion -->
-    <p
-      class="font-['Inter'] font-medium text-base text-(--intuise-color-text-secondary)"
-    >
-      Gorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate
-      libero et velit interdum, ac aliquet odio mattis. Class aptent taciti
-      sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
-    </p>
-    <!-- BUTTON -->
-    <div class="gradient-border-button">
-      <span class="btn-text">Read More</span>
+    <div class="flex gap-6 flex-col items-center">
+      <p
+        class="font-['Inter'] font-medium text-base md:text-start text-center text-(--intuise-color-text-secondary)"
+      >
+        Mulai dari riset pasar sampai uji coba prototipe, setiap langkah kami
+        terukur. Hasilnya: solusi desain yang relevan, teruji, dan siap pakai.
+      </p>
+      <!-- BUTTON -->
+      <div class="gradient-border-button">
+        <span class="btn-text">Read More</span>
+      </div>
     </div>
   </section>
   <!-- #endregion -->
@@ -198,7 +221,7 @@
   <!-- #region THEY USE OUR SERVICE -->
   <section class="px-[16px] md:px-[100px] w-full flex flex-col gap-10">
     <h1
-      class="uppercase text-[24px] md:text-[48px] font-bold font-['Work_Sans']"
+      class="uppercase text-[24px] text-center md:text-start md:text-[48px] font-bold font-['Work_Sans']"
     >
       <span class="text-white">THEY USE&nbsp;</span>
       <span class="text-(--intuise-color-primary)">OUR</span><br />
@@ -207,32 +230,36 @@
 
     <div
       style="width: inherit"
-      class="flex pb-2 flex-row gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth"
+      class="flex pb-2 flex-col md:flex-row gap-5 overflow-x-auto snap-x snap-mandatory scroll-smooth"
     >
       @for (item of [1,2,3,4,5,6]; track $index) {
       <div
-        class="shrink-0 snap-center max-w-[310px] w-max h-[420px] flex flex-col justify-between rounded-[20px] bg-[rgba(93,93,93,0.3)] p-[60px_40px]"
+        class="gap-4 md:gap-0 flex-wrap shrink-0 snap-center md:max-w-[310px] md:w-max md:h-[420px] flex flex-col md:justify-between rounded-[20px] bg-[rgba(93,93,93,0.3)] p-4 md:p-[60px_40px]"
       >
-        <div class="flex items-center justify-center">
-          <svg
-            width="52"
-            height="41"
-            viewBox="0 0 52 41"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              opacity="0.1"
-              d="M41.9015 0.258789L51.5073 5.95459C49.5169 7.24908 47.6131 8.67303 45.7957 10.2264C43.9784 11.7798 42.3775 13.3332 40.9929 14.8866C39.6082 16.44 38.44 18.0797 37.488 19.8057C36.6227 21.4454 36.1034 23.1283 35.9303 24.8543L33.7236 23.1714C34.5025 22.3947 35.3678 21.8769 36.3198 21.618C37.2717 21.2728 38.3534 21.1002 39.565 21.1002C42.6804 21.1002 45.19 22.0064 47.0938 23.8187C49.0842 25.5447 50.0794 27.7885 50.0794 30.55C50.0794 33.2253 49.0842 35.5123 47.0938 37.4109C45.19 39.3095 42.5938 40.2588 39.3053 40.2588C36.0169 40.2588 33.2909 39.2663 31.1275 37.2814C28.964 35.2965 27.8823 32.1466 27.8823 27.8316C27.8823 25.3289 28.2284 22.8694 28.9207 20.453C29.613 17.9503 30.565 15.5339 31.7765 13.2038C32.988 10.8737 34.4592 8.62988 36.19 6.47239C37.9207 4.22859 39.8246 2.15739 41.9015 0.258789ZM14.512 0.258789L24.1178 5.95459C22.1274 7.24908 20.2236 8.67303 18.4063 10.2264C16.589 11.7798 14.9447 13.3332 13.4736 14.8866C12.089 16.44 10.964 18.0797 10.0986 19.8057C9.23319 21.4454 8.71396 23.1283 8.54089 24.8543L6.33415 23.1714C7.113 22.3947 7.93512 21.8769 8.8005 21.618C9.75243 21.2728 10.8774 21.1002 12.1755 21.1002C15.2044 21.1002 17.714 22.0064 19.7044 23.8187C21.6947 25.5447 22.6899 27.7885 22.6899 30.55C22.6899 33.2253 21.6947 35.5123 19.7044 37.4109C17.8005 39.3095 15.2044 40.2588 11.9159 40.2588C8.54088 40.2588 5.77165 39.2663 3.60819 37.2814C1.53126 35.2965 0.492798 32.1466 0.492798 27.8316C0.492798 25.3289 0.795683 22.8694 1.40145 20.453C2.09376 17.9503 3.04569 15.5339 4.25723 13.2038C5.55531 10.8737 7.06973 8.62988 8.8005 6.47239C10.5313 4.22859 12.4351 2.15739 14.512 0.258789Z"
-              fill="#EDF8F9"
-            />
-          </svg>
-        </div>
+        <div class="flex items-center justify-center md:flex-col flex-row gap-4">
+          <div class="flex items-center justify-center">
+            <svg
+              width="52"
+              height="41"
+              viewBox="0 0 52 41"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                opacity="0.1"
+                d="M41.9015 0.258789L51.5073 5.95459C49.5169 7.24908 47.6131 8.67303 45.7957 10.2264C43.9784 11.7798 42.3775 13.3332 40.9929 14.8866C39.6082 16.44 38.44 18.0797 37.488 19.8057C36.6227 21.4454 36.1034 23.1283 35.9303 24.8543L33.7236 23.1714C34.5025 22.3947 35.3678 21.8769 36.3198 21.618C37.2717 21.2728 38.3534 21.1002 39.565 21.1002C42.6804 21.1002 45.19 22.0064 47.0938 23.8187C49.0842 25.5447 50.0794 27.7885 50.0794 30.55C50.0794 33.2253 49.0842 35.5123 47.0938 37.4109C45.19 39.3095 42.5938 40.2588 39.3053 40.2588C36.0169 40.2588 33.2909 39.2663 31.1275 37.2814C28.964 35.2965 27.8823 32.1466 27.8823 27.8316C27.8823 25.3289 28.2284 22.8694 28.9207 20.453C29.613 17.9503 30.565 15.5339 31.7765 13.2038C32.988 10.8737 34.4592 8.62988 36.19 6.47239C37.9207 4.22859 39.8246 2.15739 41.9015 0.258789ZM14.512 0.258789L24.1178 5.95459C22.1274 7.24908 20.2236 8.67303 18.4063 10.2264C16.589 11.7798 14.9447 13.3332 13.4736 14.8866C12.089 16.44 10.964 18.0797 10.0986 19.8057C9.23319 21.4454 8.71396 23.1283 8.54089 24.8543L6.33415 23.1714C7.113 22.3947 7.93512 21.8769 8.8005 21.618C9.75243 21.2728 10.8774 21.1002 12.1755 21.1002C15.2044 21.1002 17.714 22.0064 19.7044 23.8187C21.6947 25.5447 22.6899 27.7885 22.6899 30.55C22.6899 33.2253 21.6947 35.5123 19.7044 37.4109C17.8005 39.3095 15.2044 40.2588 11.9159 40.2588C8.54088 40.2588 5.77165 39.2663 3.60819 37.2814C1.53126 35.2965 0.492798 32.1466 0.492798 27.8316C0.492798 25.3289 0.795683 22.8694 1.40145 20.453C2.09376 17.9503 3.04569 15.5339 4.25723 13.2038C5.55531 10.8737 7.06973 8.62988 8.8005 6.47239C10.5313 4.22859 12.4351 2.15739 14.512 0.258789Z"
+                fill="#EDF8F9"
+              />
+            </svg>
+          </div>
 
-        <p class="font-['Inter'] text-lg text-(--intuise-color-text-secondary)">
-          It’s a super professional team. I can’t wait to see the future
-          features.
-        </p>
+          <p
+            class="font-['Inter'] text-lg text-(--intuise-color-text-secondary)"
+          >
+            It’s a super professional team. I can’t wait to see the future
+            features.
+          </p>
+        </div>
 
         <div class="flex flex-row gap-3 items-center">
           <img
@@ -254,14 +281,14 @@
       class="w-full flex justify-center items-center gap-5 opacity-60 flex-wrap md:flex-nowrap"
     >
       @for (item of ourClient; track $index) {
-        <a routerLink="/proj/web-sanlog">
-          <img
-            class="md:w-[200px] w-[150px] max-w-full object-contain h-[50px]"
-            [id]="$index + 1"
-            [src]="item.img"
-            alt=""
-          />
-        </a>
+      <a routerLink="/proj/web-sanlog">
+        <img
+          class="md:w-[200px] w-[150px] max-w-full object-contain h-[50px]"
+          [id]="$index + 1"
+          [src]="item.img"
+          alt=""
+        />
+      </a>
       }
     </div>
   </section>
@@ -270,7 +297,7 @@
   <!-- #region DID YOU KNOW -->
   <section class="px-[16px] md:px-[100px] w-full flex flex-col gap-10">
     <h1
-      class="uppercase text-[24px] md:text-[48px] font-bold font-['Work_Sans']"
+      class="text-center md:text-start uppercase text-[24px] md:text-[48px] font-bold font-['Work_Sans']"
     >
       <span class="text-(--intuise-color-primary)">Did You</span>
       <span class="text-white">&nbsp;Know?</span>
@@ -279,20 +306,22 @@
     <div class="flex gap-[40px] flex-col md:flex-row">
       <!-- Data besar di kiri -->
       <div
-        class="gap-5 flex-1 flex-col text-white font-bold flex items-center justify-center"
+        class="gap-5 flex-1 flex-row md:flex-col text-white font-bold flex items-center justify-center"
       >
         <!-- {{ datas[0].name }} -->
         <img
-          class="rounded-2xl h-full w-full object-cover"
+          class="rounded-2xl h-[100px] w-[150px] md:h-full md:w-full object-cover"
           [src]="datas[0].img"
           alt=""
         />
         <div class="flex flex-col gap-2">
-          <p class="text-white text-2xl uppercase">
+          <p
+            class="text-white text-lg md:text-2xl uppercase line-clamp-3 md:line-clamp-none"
+          >
             {{ datas[0].title }}
           </p>
           <p
-            class="text-xs font-['Inter']"
+            class="text-xs font-['Inter'] line-clamp-2 md:line-clamp-none"
             style="color: rgba(237, 248, 249, 0.5)"
           >
             {{ datas[0].desc }}
@@ -303,10 +332,10 @@
       <!-- Data 2,3,4 di kanan, stack vertikal -->
       <div class="flex flex-col flex-1 gap-[40px]">
         @for (item of datas.slice(1); track $index) {
-        <div class="flex items-start justify-start gap-5 flex-col md:flex-row">
+        <div class="flex items-start justify-start gap-5 flex-row">
           <!-- {{ item.name }} -->
           <img
-            class="max-h-[155px] rounded-2xl object-cover w-full md:w-[240px]"
+            class="h-[100px] w-[150px] md:max-h-[155px] rounded-2xl object-cover md:w-full md:w-[240px]"
             [src]="item.img"
             [alt]="item.img"
           />
@@ -330,12 +359,13 @@
 
   <!-- #region HAVE ANY PROJECT IN MIND? -->
   <section
-    class="bg-[url('/assets/Background-2.png')] bg-cover bg-center py-30"
+    class="relative md:bg-[url('/assets/Background-2.png')] bg-cover bg-center py-10 md:py-30"
   >
+    <div class="ellipse-256"></div>
     <div class="px-5 md:px-[100px] flex flex-col md:flex-row gap-5">
       <div class="md:w-1/2">
         <h1
-          class="uppercase text-[24px] md:text-[48px] font-bold font-['Work_Sans']"
+          class="text-center md:text-start uppercase text-[24px] md:text-[48px] font-bold font-['Work_Sans']"
           style="line-height: normal"
         >
           <span class="text-(--intuise-color-primary)">Have&nbsp;</span>
@@ -453,7 +483,9 @@
       <div
         class="h-[300px] md:h-auto w-full overflow-hidden flex-auto p-[34px] rounded-2xl bg-[rgba(93,93,93,0.2)] flex justify-center items-center relative"
       >
-        <div class="absolute top-2 md:top-7 right-2 md:right-7 w-[96px] scale-70 md:scale-100">
+        <div
+          class="absolute top-2 md:top-7 right-2 md:right-7 w-[96px] scale-70 md:scale-100"
+        >
           <label class="toggle-switch">
             <input
               type="checkbox"
