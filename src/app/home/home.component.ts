@@ -88,28 +88,16 @@ export class HomeComponent implements OnInit {
   browse = [
     {
       id: 1,
-      title: 'Kantara SDM',
-      desc: 'Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputatevulputate libero et velit interdum, ac aliquet odio mattis...',
+      title: 'Kantara DSM',
+      desc: 'UI and interaction design for a RAD-based digital broadcasting platform, combining modern visuals and creative direction with clear, structured workflows and intuitive real-world usability.',
       image: 'assets/item-dummy-1.png',
     },
     {
       id: 2,
-      title: 'Microsoft',
-      desc: 'Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputatevulputate libero et velit interdum, ac aliquet odio mattis...',
-      image: 'assets/item-dummy-2.png',
-    },
-    {
-      id: 3,
-      title: 'Kantara SDM',
-      desc: 'Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputatevulputate libero et velit interdum, ac aliquet odio mattis...',
-      image: 'assets/item-dummy-1.png',
-    },
-    {
-      id: 4,
-      title: 'Microsoft',
-      desc: 'Porem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputatevulputate libero et velit interdum, ac aliquet odio mattis...',
-      image: 'assets/item-dummy-2.png',
-    },
+      title: 'Santoso Logistic Web + CMS',
+      desc: 'A logistics company website and CMS designed to organize complex business and operational content into clear, structured, and intuitive experiences, with a strong focus on content management flexibility and SEO performance.',
+      image: 'assets/sanlog-logistic.png',
+    }
   ];
   solution = [
     {
