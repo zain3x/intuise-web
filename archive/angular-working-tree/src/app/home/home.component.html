@@ -1,0 +1,154 @@
+<main id="main-content">
+  <section id="top" class="hero section-dark" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow">Product design · UX engineering · Frontend</p>
+      <h1 id="hero-title">Product experiences<br /><em>designed to be built.</em></h1>
+      <p class="hero-intro">
+        Intuise turns complex product requirements into clear interfaces—and carries the design through to responsive, production-ready frontend.
+      </p>
+      <div class="hero-actions">
+        <a class="button button-signal" href="#work">See selected work <span aria-hidden="true">↘</span></a>
+        <a class="text-link" href="#services">Explore capabilities <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-label="Kantara digital broadcasting interface designed by Intuise">
+      <div class="hero-visual-meta">
+        <span>Selected interface work</span>
+        <span>01 / 02</span>
+      </div>
+      <img src="assets/item-dummy-1.png" width="300" height="450" alt="Kantara digital broadcasting management interface across desktop screens" />
+      <div class="hero-visual-caption">
+        <strong>Kantara DSM</strong>
+        <span>Complex broadcast workflows, made clearer.</span>
+      </div>
+    </div>
+
+    <a class="scroll-cue" href="#work"><span>Scroll to explore</span><i aria-hidden="true"></i></a>
+  </section>
+
+  <section id="work" class="section-light work-section" aria-labelledby="work-title">
+    <header class="section-heading">
+      <div>
+        <p class="eyebrow">Selected work</p>
+        <h2 id="work-title">Interfaces shaped around real operational complexity.</h2>
+      </div>
+      <p>Two examples available in the current Intuise portfolio. Presented without invented metrics or outcomes.</p>
+    </header>
+
+    <article class="project project-featured">
+      <div class="project-media project-media-kantara">
+        <img src="assets/item-dummy-1.png" width="300" height="450" alt="Kantara DSM broadcast management interface shown across desktop screens" loading="eager" />
+        <span class="project-index">01 / 02</span>
+      </div>
+      <div class="project-content">
+        <div class="project-meta"><span>Product interface</span><span>Broadcasting</span></div>
+        <h3>Kantara DSM</h3>
+        <p class="project-lead">A clearer working interface for a complex digital broadcasting platform.</p>
+        <p>Intuise contributed UI and interaction design for a RAD-based digital signage and broadcasting environment. The work focuses on organising dense monitoring, scheduling, media, and operational controls into structured workflows that remain practical in day-to-day use.</p>
+        <dl class="project-scope">
+          <div><dt>Role</dt><dd>UI and interaction design</dd></div>
+          <div><dt>Focus</dt><dd>Complex workflows, monitoring, system clarity</dd></div>
+        </dl>
+      </div>
+    </article>
+
+    <article class="project project-reverse">
+      <div class="project-media project-media-sanlog">
+        <img src="assets/sanlog-logistic.png" width="300" height="450" alt="Santoso Logistic company website and content management interface" loading="lazy" />
+        <span class="project-index">02 / 02</span>
+      </div>
+      <div class="project-content">
+        <div class="project-meta"><span>Company website</span><span>Logistics</span></div>
+        <h3>Santoso Logistic</h3>
+        <p class="project-lead">A company website designed to make a complex logistics business easier to understand and maintain.</p>
+        <p>The website and CMS organise company, fleet, service, and operational content into a clearer public experience. The work balances brand presentation with content-management flexibility and an SEO-conscious structure.</p>
+        <dl class="project-scope">
+          <div><dt>Role</dt><dd>Website design and CMS experience</dd></div>
+          <div><dt>Focus</dt><dd>Content structure, responsive UI, maintainability</dd></div>
+        </dl>
+      </div>
+    </article>
+  </section>
+
+  <section id="services" class="section-paper services-section" aria-labelledby="services-title">
+    <header class="section-heading">
+      <div>
+        <p class="eyebrow">What we help with</p>
+        <h2 id="services-title">Support where design and implementation need to meet.</h2>
+      </div>
+      <p>Engage Intuise for a focused phase or for a connected path from exploration through frontend delivery.</p>
+    </header>
+
+    <div class="capability-list">
+      <article class="capability" *ngFor="let capability of capabilities">
+        <span class="capability-number">{{ capability.number }}</span>
+        <h3>{{ capability.title }}</h3>
+        <p>{{ capability.summary }}</p>
+        <ul>
+          <li *ngFor="let item of capability.items">{{ item }}</li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="bridge-section section-dark" aria-label="Design and engineering bridge">
+    <p class="eyebrow">The advantage</p>
+    <div class="bridge-statement">
+      <p>Design decisions that understand</p>
+      <div class="bridge-rule"><span>business requirements</span><i></i><span>frontend constraints</span></div>
+      <p>before handoff becomes a problem.</p>
+    </div>
+  </section>
+
+  <section id="approach" class="section-light approach-section" aria-labelledby="approach-title">
+    <header class="section-heading">
+      <div>
+        <p class="eyebrow">How we work</p>
+        <h2 id="approach-title">A practical process with fewer gaps between thinking and making.</h2>
+      </div>
+      <p>Small-team collaboration keeps decisions direct. The process adapts to the product, but the intent stays consistent.</p>
+    </header>
+
+    <ol class="process-list">
+      <li *ngFor="let step of process">
+        <span>{{ step.number }}</span>
+        <h3>{{ step.title }}</h3>
+        <p>{{ step.body }}</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="about" class="section-paper about-section" aria-labelledby="about-title">
+    <div class="about-aside">
+      <p class="eyebrow">About Intuise</p>
+      <div class="precision-mark" aria-hidden="true"><span>90°</span></div>
+    </div>
+    <div class="about-copy">
+      <h2 id="about-title">A focused team for products that need both design judgement and implementation awareness.</h2>
+      <div class="about-columns">
+        <p>Intuise UX Solution works closely with founders, product teams, designers, and engineers to make complicated digital experiences easier to use and more realistic to build.</p>
+        <p>We are intentionally small. That means direct collaboration, attention to detail, and fewer layers between a requirement, a design decision, and the interface that ships.</p>
+      </div>
+      <div class="fit-list" aria-label="Good fit for">
+        <span>Good fit for</span>
+        <ul>
+          <li>Product teams refining complex interfaces</li>
+          <li>Design teams needing UX engineering support</li>
+          <li>Businesses needing a credible, well-built website</li>
+          <li>Remote collaboration with regional or international teams</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section section-signal" aria-labelledby="contact-title">
+    <p class="eyebrow">Start a conversation</p>
+    <h2 id="contact-title">Have a product or interface that needs clearer thinking—and stronger execution?</h2>
+    <p>Tell us what you are building, where the work is getting complicated, and what kind of support your team needs.</p>
+    <a class="button button-dark" href="https://wa.me/6281215110601" target="_blank" rel="noopener noreferrer">
+      Talk with Intuise on WhatsApp <span aria-hidden="true">↗</span>
+    </a>
+    <div class="contact-ruler" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+  </section>
+</main>

@@ -1,0 +1,696 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import BrandLogo from "../components/brand/BrandLogo.astro";
+import Button from "../components/ui/Button.astro";
+import "../styles/design-system.css";
+
+const colors = [
+  [
+    "Brand primary",
+    "--brand-primary",
+    "#13c6d4",
+    "Primary actions, emphasis",
+    "Dark text: strong",
+  ],
+  [
+    "Primary deep",
+    "--brand-primary-deep",
+    "#087e88",
+    "Links on light surfaces",
+    "Use with light background",
+  ],
+  [
+    "Accent pink",
+    "--brand-accent",
+    "#c74f8a",
+    "Limited editorial accent",
+    "Do not use for body text",
+  ],
+  [
+    "Accent violet",
+    "--brand-accent-violet",
+    "#8555d9",
+    "Experimental/Games accent",
+    "Pair with white",
+  ],
+  ["Ink", "--ink", "#081210", "Primary dark surface", "Paper text: strong"],
+  [
+    "Ink soft",
+    "--ink-soft",
+    "#10211e",
+    "Raised dark surface",
+    "Paper text: strong",
+  ],
+  [
+    "Paper",
+    "--surface-paper",
+    "#f5f3eb",
+    "Primary light surface",
+    "Main text: strong",
+  ],
+  [
+    "Fog",
+    "--surface-fog",
+    "#e8e8df",
+    "Secondary light surface",
+    "Main text: strong",
+  ],
+  [
+    "Text main",
+    "--text-main",
+    "#0b1412",
+    "Primary text on light",
+    "AAA on paper",
+  ],
+  [
+    "Text muted",
+    "--text-muted",
+    "#5f6863",
+    "Secondary text on light",
+    "Check at small sizes",
+  ],
+  [
+    "Success",
+    "--status-success",
+    "#1d9b67",
+    "Confirmed and successful state",
+    "Add icon or text",
+  ],
+  [
+    "Warning",
+    "--status-warning",
+    "#c47a16",
+    "Caution state",
+    "Add icon or text",
+  ],
+  [
+    "Error",
+    "--status-error",
+    "#c74444",
+    "Error and destructive state",
+    "White text for fills",
+  ],
+  [
+    "Info",
+    "--status-info",
+    "#287fc5",
+    "Informational state",
+    "Add icon or text",
+  ],
+];
+
+const typeRows = [
+  [
+    "Display",
+    "Manrope 650",
+    "clamp(3.2rem, 2rem + 5vw, 7.2rem)",
+    "0.91",
+    "-0.067em",
+  ],
+  [
+    "H1",
+    "Manrope 650",
+    "clamp(2.35rem, 1.6rem + 3vw, 4.6rem)",
+    "0.98",
+    "-0.055em",
+  ],
+  [
+    "H2",
+    "Manrope 650",
+    "clamp(2.35rem, 1.6rem + 3vw, 4.6rem)",
+    "0.98",
+    "-0.055em",
+  ],
+  [
+    "H3",
+    "Manrope 650",
+    "clamp(1.65rem, 1.3rem + 1.4vw, 2.5rem)",
+    "1.05",
+    "-0.04em",
+  ],
+  [
+    "H4",
+    "Manrope 700",
+    "clamp(1.2rem, 1.05rem + .6vw, 1.55rem)",
+    "1.15",
+    "-0.02em",
+  ],
+  ["Body large", "Inter 400", "1.0625–1.25rem", "1.65", "0"],
+  ["Body", "Inter 400", "1rem minimum", "1.65", "0"],
+  ["Small", "Inter 400", ".875rem", "1.55", "0"],
+  ["Caption", "Inter 600", ".75rem", "1.4", ".04em"],
+  ["Label", "Inter 700", ".8125rem", "1.2", ".08em"],
+  ["Button", "Inter 800", ".875rem", "1", "0"],
+];
+
+const spacing = [
+  ["4", "--space-0"],
+  ["8", "--space-1"],
+  ["12", "--space-2"],
+  ["16", "--space-3"],
+  ["24", "--space-4"],
+  ["32", "--space-5"],
+  ["48", "--space-6"],
+  ["64", "4rem"],
+  ["96", "--space-96"],
+];
+const nav = ["Foundation", "Components", "Patterns", "Content & access"];
+---
+
+<BaseLayout
+  title="Intuise Design System Foundation"
+  description="Internal living documentation for the Intuise visual and interaction foundation."
+  canonical="https://intuise.com/design-system/"
+  robots="noindex, nofollow"
+>
+  <div class="ds-shell">
+    <aside class="ds-sidebar" aria-label="Design system navigation">
+      <a class="ds-brand" href="#ds-top"><BrandLogo compact /></a>
+      <p class="ds-status">Foundation v0.1<br />Internal reference</p>
+      <nav>
+        {
+          nav.map((item) => (
+            <a
+              href={`#${item.toLowerCase().replaceAll(" ", "-").replace("-&-", "-")}`}
+            >
+              {item}
+            </a>
+          ))
+        }
+      </nav>
+      <a class="ds-back" href="/">← Back to Intuise</a>
+    </aside>
+
+    <div class="ds-content" id="ds-top">
+      <header class="ds-hero">
+        <p class="ds-kicker">Intuise UX Solution · Foundation v0.1</p>
+        <h1>A small system for clear, <em>intuitive</em> interfaces.</h1>
+        <p>
+          Living documentation based on the current Astro implementation and
+          preserved visual language from the Angular repository. It favors
+          reusable decisions over a large component catalogue.
+        </p>
+        <div class="ds-notice">
+          <strong>Temporary brand treatment.</strong> The textual wordmark is a centralized
+          fallback until an approved master logo is available.
+        </div>
+      </header>
+
+      <section class="ds-section" id="foundation">
+        <div class="ds-heading">
+          <span>01</span><div>
+            <p>Foundation</p><h2>Color, type, space, and depth</h2>
+          </div>
+        </div>
+
+        <article class="ds-block">
+          <div class="ds-block-title">
+            <h3>Color</h3><p>
+              Tosca leads. Magenta and violet remain limited accents. Status
+              must never rely on color alone.
+            </p>
+          </div>
+          <div class="color-grid">
+            {
+              colors.map(([name, token, value, usage, contrast]) => (
+                <div class="color-card">
+                  <div class="color-swatch" style={`--swatch:${value}`} />
+                  <>
+                    <h4>{name}</h4>
+                    <code>{token}</code>
+                    <span>{value}</span>
+                    <p>{usage}</p>
+                    <small>{contrast}</small>
+                  </>
+                </div>
+              ))
+            }
+          </div>
+          <div class="gradient-grid">
+            <div class="gradient-card brand">
+              <strong>Brand gradient</strong><code>--gradient-brand</code>
+            </div>
+            <div class="gradient-card accent">
+              <strong>Accent gradient</strong><code>--gradient-accent</code>
+            </div>
+            <div class="gradient-card surface">
+              <strong>Surface gradient</strong><code>--gradient-surface</code>
+            </div>
+          </div>
+        </article>
+
+        <article class="ds-block">
+          <div class="ds-block-title">
+            <h3>Typography</h3><p>
+              Manrope carries display hierarchy. Inter carries readable
+              interface and body copy. Body text has a 16px minimum.
+            </p>
+          </div>
+          <div class="type-specimens">
+            <p class="type-display">Intuitive systems.</p><h2>
+              Design and code, connected.
+            </h2><h3>Interfaces people can continue.</h3><p
+              class="type-body-lg"
+            >
+              Clear structure makes a product easier to understand, maintain,
+              and grow.
+            </p><p>
+              Body copy stays at least 16px with generous line-height for
+              sustained reading.
+            </p>
+          </div>
+          <div class="ds-table-wrap">
+            <table>
+              <thead
+                ><tr
+                  ><th>Style</th><th>Family / weight</th><th>Size</th><th
+                    >Line</th
+                  ><th>Tracking</th></tr
+                ></thead
+              ><tbody
+                >{
+                  typeRows.map((row) => (
+                    <tr>
+                      {row.map((cell) => (
+                        <td>{cell}</td>
+                      ))}
+                    </tr>
+                  ))
+                }</tbody
+              >
+            </table>
+          </div>
+        </article>
+
+        <div class="ds-two-col">
+          <article class="ds-block">
+            <div class="ds-block-title">
+              <h3>Spacing</h3><p>
+                A 4px base with the existing editorial rhythm.
+              </p>
+            </div><div class="space-list">
+              {
+                spacing.map(([size, token]) => (
+                  <div>
+                    <>
+                      <span>{size}px</span>
+                      <i style={`width:${size}px`} />
+                      <code>{token}</code>
+                    </>
+                  </div>
+                ))
+              }
+            </div>
+          </article>
+          <article class="ds-block">
+            <div class="ds-block-title">
+              <h3>Radius</h3><p>
+                Soft enough to feel modern, never fully bubbly except tags.
+              </p>
+            </div><div class="radius-grid">
+              <div class="r-small">Small · 4px</div><div class="r-button">
+                Button · 15px
+              </div><div class="r-card">Card · 22px</div><div class="r-surface">
+                Surface · 24px
+              </div><div class="r-pill">Pill · contextual only</div>
+            </div>
+          </article>
+        </div>
+
+        <article class="ds-block">
+          <div class="ds-block-title">
+            <h3>Depth and focus</h3><p>
+              Use elevation to explain hierarchy, not to decorate every surface.
+            </p>
+          </div><div class="shadow-grid">
+            <div class="shadow-soft">Soft</div><div class="shadow-elevated">
+              Elevated
+            </div><div class="shadow-hero">Hero visual</div><div
+              class="shadow-floating"
+            >
+              Floating panel
+            </div><button class="focus-demo">Keyboard focus</button>
+          </div>
+        </article>
+
+        <article class="ds-block">
+          <div class="ds-block-title">
+            <h3>Grid and layout</h3><p>
+              Content remains fluid inside stable gutters and readable maximum
+              widths.
+            </p>
+          </div><div class="grid-demo">
+            <div></div><div></div><div></div><div></div><div></div><div>
+            </div><div></div><div></div><div></div><div></div><div></div><div>
+            </div>
+          </div><dl class="layout-rules">
+            <div><dt>Container</dt><dd>1440px maximum</dd></div><div>
+              <dt>Copy width</dt><dd>704px maximum</dd>
+            </div><div><dt>Desktop</dt><dd>12 columns</dd></div><div>
+              <dt>Tablet</dt><dd>8 columns</dd>
+            </div><div><dt>Mobile</dt><dd>4 columns</dd></div><div>
+              <dt>Gutter</dt><dd>20–80px fluid</dd>
+            </div>
+          </dl>
+        </article>
+      </section>
+
+      <section class="ds-section" id="components">
+        <div class="ds-heading">
+          <span>02</span><div>
+            <p>Components</p><h2>Small, semantic building blocks</h2>
+          </div>
+        </div>
+        <article class="ds-block">
+          <div class="ds-block-title">
+            <h3>Buttons</h3><p>
+              Use links for navigation and buttons for actions. Every variant
+              shares size, radius, and focus behavior.
+            </p>
+          </div><div class="component-row">
+            <Button label="Primary action" /><Button
+              variant="secondary"
+              label="Secondary"
+            /><Button variant="text" label="Text action" /><Button
+              variant="ghost"
+              label="Ghost"
+            /><Button variant="icon" label="→"
+              ><span class="sr-only">Continue</span><span aria-hidden="true"
+                >→</span
+              ></Button
+            ><Button variant="destructive" label="Delete" /><Button
+              disabled
+              label="Disabled"
+            /><Button loading label="Loading" />
+          </div>
+        </article>
+
+        <article class="ds-block">
+          <div class="ds-block-title">
+            <h3>Links</h3><p>
+              Underlines support recognition in body content. Navigation links
+              may rely on placement, weight, and active state.
+            </p>
+          </div><div class="link-list">
+            <p>
+              Read our <a href="#components">interface principles</a> in context.
+            </p><a class="nav-link-demo" href="#components">Navigation link</a
+            ><a class="cta-link-demo" href="#patterns">Explore the pattern →</a
+            ><a href="https://intuise.com" target="_blank" rel="noreferrer"
+              >External link ↗<span class="sr-only">
+                opens in a new tab</span
+              ></a
+            ><a href="/">← Back to landing page</a>
+          </div>
+        </article>
+
+        <article class="ds-block">
+          <div class="ds-block-title">
+            <h3>Cards</h3><p>
+              Hierarchy changes by purpose. Cards are not one repeated container
+              with different copy.
+            </p>
+          </div><div class="card-grid">
+            <article class="card service">
+              <span>01</span><h4>UX strategy</h4><p>
+                Shape the right problem before polishing the interface.
+              </p>
+            </article><article class="card case">
+              <p>Featured case study</p><div class="case-image"></div><h4>
+                Problem → decisions → verified outcome
+              </h4>
+            </article><label class="card option"
+              ><input type="radio" name="card-demo" checked /><span
+                >Internal tool</span
+              ><small>Selected solution direction</small></label
+            ><article class="card insight">
+              <p>Insight · 5 min</p><h4>
+                Design systems should reduce decisions, not multiply them.
+              </h4><a href="#content-access">Read principle →</a>
+            </article><article class="card highlight">
+              <p>Highlight</p><h4>One strong idea, given room to breathe.</h4>
+            </article><article class="card games">
+              <p>Intuise Games</p><h4>
+                Exploring the next interface beyond the screen.
+              </h4><span>Visit separate lab ↗</span>
+            </article>
+          </div>
+        </article>
+
+        <article class="ds-block">
+          <div class="ds-block-title">
+            <h3>Forms and controls</h3><p>
+              Labels stay visible. Help and error copy explains recovery in
+              plain language.
+            </p>
+          </div><form class="form-demo" onsubmit="return false">
+            <label
+              >Project name<input
+                type="text"
+                placeholder="e.g. Operations dashboard"
+              /></label
+            ><label class="is-filled"
+              >Email<input type="email" value="team@example.com" /></label
+            ><label
+              >Project type<select
+                ><option>Website</option><option>Web app</option><option
+                  >Internal tool</option
+                ></select
+              ></label
+            ><label class="is-error"
+              >Timeline<input
+                type="text"
+                value="Soon"
+                aria-invalid="true"
+                aria-describedby="timeline-error"
+              /><small id="timeline-error">Add a month or target date.</small
+              ></label
+            ><label
+              >Context<textarea
+                rows="4"
+                placeholder="What should become easier?"></textarea></label
+            ><label class="disabled-control"
+              >Disabled<input type="text" value="Unavailable" disabled /></label
+            ><fieldset>
+              <legend>Preferred starting point</legend><label
+                ><input type="radio" name="start" checked /> Audit</label
+              ><label><input type="radio" name="start" /> Prototype</label>
+            </fieldset><label class="check"
+              ><input type="checkbox" checked /> Include frontend implementation</label
+            ><fieldset class="segments">
+              <legend>Engagement</legend><label
+                ><input type="radio" name="engagement" checked /><span
+                  >Focused sprint</span
+                ></label
+              ><label
+                ><input type="radio" name="engagement" /><span>End-to-end</span
+                ></label
+              >
+            </fieldset>
+          </form>
+        </article>
+      </section>
+
+      <section class="ds-section" id="patterns">
+        <div class="ds-heading">
+          <span>03</span><div>
+            <p>Patterns</p><h2>Reusable product behavior</h2>
+          </div>
+        </div>
+        <article class="ds-block">
+          <div class="ds-block-title">
+            <h3>Solution Finder</h3><p>
+              A progressive-enhancement pattern. Native radio inputs remain
+              usable without JavaScript; state enhances preview and mailto
+              context.
+            </p>
+          </div><div class="finder-demo">
+            <fieldset>
+              <legend>What are you building?</legend><label
+                ><input type="radio" name="finder" /><span
+                  ><strong>Company profile</strong><small
+                    >Clear story and credible proof</small
+                  ></span
+                ></label
+              ><label class="selected"
+                ><input type="radio" name="finder" checked /><span
+                  ><strong>Internal tool</strong><small>Selected state</small
+                  ></span
+                ></label
+              ><label
+                ><input type="radio" name="finder" /><span
+                  ><strong>Dashboard</strong><small
+                    >Data people can act on</small
+                  ></span
+                ></label
+              >
+            </fieldset><div class="finder-preview">
+              <span>Preview area</span><div class="preview-window">
+                <i></i><i></i><i></i>
+              </div>
+            </div><aside>
+              <span>Expected outcome</span><h4>
+                Fewer steps for recurring operational work.
+              </h4><p>
+                The contextual CTA carries this selected direction into the
+                contact brief.
+              </p><Button
+                href="mailto:rindra@intuise.com?subject=Internal%20tool%20direction"
+                label="Use This Direction"
+              />
+            </aside>
+          </div><ul class="behavior-list">
+            <li>
+              <strong>Keyboard:</strong> Tab enters the group; arrow keys move radio
+              selection.
+            </li><li>
+              <strong>No JavaScript:</strong> all options and the base contact link
+              remain available.
+            </li><li>
+              <strong>Empty:</strong> preview explains how to choose rather than showing
+              a blank panel.
+            </li>
+          </ul>
+        </article>
+
+        <div class="ds-two-col">
+          <article class="ds-block">
+            <div class="ds-block-title">
+              <h3>Motion</h3><p>
+                Motion supports orientation, response, and continuity.
+              </p>
+            </div><dl class="motion-list">
+              <div>
+                <dt>Fast</dt><dd>160ms · hover and control feedback</dd>
+              </div><div>
+                <dt>Standard</dt><dd>300ms · state and panel changes</dd>
+              </div><div>
+                <dt>Slow</dt><dd>520ms · restrained section entry</dd>
+              </div><div>
+                <dt>Easing</dt><dd>
+                  Standard for feedback; enter easing for reveals
+                </dd>
+              </div><div>
+                <dt>Sticky hero</dt><dd>
+                  CSS layering only; no heavy parallax
+                </dd>
+              </div><div>
+                <dt>Reduced motion</dt><dd>
+                  Remove transforms, reveals, and sticky composition
+                </dd>
+              </div>
+            </dl>
+          </article><article class="ds-block">
+            <div class="ds-block-title">
+              <h3>Iconography</h3><p>
+                Prefer the existing small SVG set and simple inline symbols over
+                another library.
+              </p>
+            </div><div class="icon-grid">
+              <span>→</span><span>↗</span><span>✓</span><span>!</span>
+            </div><ul class="behavior-list">
+              <li>20–24px default canvas; 1.5–2px visual stroke.</li><li>
+                Align optically with text, not only geometrically.
+              </li><li>Decorative icons use <code>aria-hidden</code>.</li><li>
+                Icon-only controls require an accessible name.
+              </li>
+            </ul>
+          </article>
+        </div>
+
+        <article class="ds-block">
+          <div class="ds-block-title">
+            <h3>Imagery</h3><p>
+              Separate background atmosphere from product evidence. Preserve
+              existing assets until ownership and replacements are approved.
+            </p>
+          </div><div class="imagery-grid">
+            <figure>
+              <div class="image-demo hero-image">
+                <img src="/assets/Background-2.png" alt="" /><img
+                  src="/assets/item-dummy-1.png"
+                  alt="Example product mockup layer"
+                />
+              </div><figcaption>
+                Hero: independent background and foreground layers.
+              </figcaption>
+            </figure><figure>
+              <div class="image-demo portfolio-image">
+                <img
+                  src="/assets/background.png"
+                  alt="City skyline at dusk used as a portfolio background"
+                />
+              </div><figcaption>
+                Portfolio: intentional crop, stable aspect ratio, truthful alt
+                text.
+              </figcaption>
+            </figure>
+          </div><ul class="behavior-list">
+            <li>
+              Use responsive dimensions and reserve space to prevent layout
+              shift.
+            </li><li>
+              Decorative atmosphere uses empty alt; meaningful work receives
+              concise alt text.
+            </li><li>
+              Do not bake text into images or fabricate client outcomes.
+            </li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="ds-section" id="content-access">
+        <div class="ds-heading">
+          <span>04</span><div>
+            <p>Content & accessibility</p><h2>
+              Clarity is part of the interface
+            </h2>
+          </div>
+        </div>
+        <div class="access-grid">
+          <article>
+            <strong>4.5:1</strong><h3>Text contrast</h3><p>
+              Minimum for normal text. Large text may use 3:1.
+            </p>
+          </article><article>
+            <strong>44px</strong><h3>Touch target</h3><p>
+              Minimum interactive area on touch screens.
+            </p>
+          </article><article>
+            <strong>Visible</strong><h3>Keyboard focus</h3><p>
+              A tosca ring with adequate offset on every control.
+            </p>
+          </article><article>
+            <strong>Semantic</strong><h3>HTML first</h3><p>
+              Headings, buttons, links, fields, lists, and landmarks match their
+              purpose.
+            </p>
+          </article><article>
+            <strong>Optional</strong><h3>Motion</h3><p>
+              Reduced-motion removes non-essential movement and sticky
+              composition.
+            </p>
+          </article><article>
+            <strong>Independent</strong><h3>State meaning</h3><p>
+              Labels, icons, and copy accompany color changes.
+            </p>
+          </article>
+        </div>
+        <article class="ds-block ds-rules">
+          <h3>Writing and implementation rules</h3><ol>
+            <li>Start with the user’s task and concrete outcome.</li><li>
+              Use short sentences and explicit labels. Avoid empty agency
+              jargon.
+            </li><li>Maintain one H1 and a sequential heading hierarchy.</li><li
+            >
+              Keep essential content in static HTML.
+            </li><li>
+              Test keyboard order, zoom, contrast, loading, error, empty, and
+              disabled states.
+            </li>
+          </ol>
+        </article>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

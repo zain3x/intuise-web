@@ -1,0 +1,18 @@
+---
+import BrandLogo from "../brand/BrandLogo.astro";
+import { navigation } from "../../data/site";
+---
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+<header class="site-header">
+  <a class="brand-link" href="#top"><BrandLogo compact /></a>
+  <nav class="desktop-nav" aria-label="Primary navigation">
+    {navigation.map(([label, href]) => <a href={href}>{label}</a>)}
+  </nav>
+  <details class="mobile-nav">
+    <summary aria-label="Open navigation"><span></span><span></span></summary>
+    <nav aria-label="Mobile navigation">
+      {navigation.map(([label, href]) => <a href={href}>{label}</a>)}
+    </nav>
+  </details>
+</header>

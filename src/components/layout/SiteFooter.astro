@@ -1,0 +1,19 @@
+---
+import BrandLogo from "../brand/BrandLogo.astro";
+import { navigation } from "../../data/site";
+---
+
+<footer class="site-footer">
+  <div>
+    <BrandLogo inverted />
+    <p>Clear interfaces. Thoughtful systems.<br />Frontend that holds up.</p>
+  </div>
+  <nav aria-label="Footer navigation">
+    {navigation.map(([label, href]) => <a href={href}>{label}</a>)}
+  </nav>
+  <div class="footer-meta">
+    <a href="mailto:rindra@intuise.com">rindra@intuise.com</a>
+    <span>Jakarta, Indonesia · Working remotely</span>
+    <span>© {new Date().getFullYear()} Intuise</span>
+  </div>
+</footer>

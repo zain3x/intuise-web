@@ -1,0 +1,39 @@
+@use "tailwindcss" as *;
+
+:root {
+  --ink: #0b1110;
+  --paper: #f6f4ed;
+  --fog: #e9e8e1;
+  --signal: #12c7d5;
+  --signal-deep: #007f8a;
+  --muted: #616762;
+  --muted-dark: #a6ada7;
+  --line: rgba(11, 17, 16, 0.16);
+  --line-strong: rgba(11, 17, 16, 0.36);
+  --line-dark: rgba(246, 244, 237, 0.1);
+  --line-dark-strong: rgba(246, 244, 237, 0.24);
+  --font-display: "Manrope", "Arial Narrow", sans-serif;
+  --font-serif: "Manrope", Arial, sans-serif;
+  --font-body: "Inter", Arial, sans-serif;
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--ink); }
+body { margin: 0; min-width: 320px; background: var(--ink); color: var(--paper); font-family: var(--font-body); -webkit-font-smoothing: antialiased; }
+button, input, textarea, select { font: inherit; }
+img { max-width: 100%; }
+a, button { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid var(--signal); outline-offset: 4px; }
+::selection { background: var(--signal); color: var(--ink); }
+
+.eyebrow { margin: 0; font-size: 0.66rem; font-weight: 720; line-height: 1.4; text-transform: uppercase; letter-spacing: 0.18em; }
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: #667064; border: 2px solid var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}

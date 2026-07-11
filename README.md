@@ -1,59 +1,67 @@
-# IntuiseWeb
+# Intuise.com
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+Static-first Intuise UX landing experience built with Astro, TypeScript, and one React island for the interactive Solution Finder.
 
-## Development server
+## Stack and prerequisites
 
-To start a local development server, run:
+- Node 22 (Netlify uses the latest Node 22 release; local lint tooling currently expects Node 22.22.3 or newer)
+- npm 11
+- Astro static output
+- React only for `SolutionFinder.tsx`
 
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Commands
 
 ```bash
-ng generate component component-name
+npm install
+npm run dev
+npm run build
+npm run preview
+npm run validate
+npm run security:audit
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+`validate` runs Astro check, ESLint, Prettier check, unit tests, and the production build. Output is written to `dist/`.
 
-```bash
-ng generate --help
+## Design system
+
+Run the site and open `http://localhost:4321/design-system/` for the living foundation documentation. The route documents color, typography, spacing, layout, controls, cards, Solution Finder behavior, imagery, motion, and accessibility. It is intentionally `noindex, nofollow` and excluded from the sitemap while the master logo and asset approvals remain unresolved.
+
+Tokens live in `src/styles/tokens.css`, shared primitives in `src/styles/global.css`, and route-specific documentation layout in `src/styles/design-system.css`. Keep the system small: add a token or component only when it solves a repeated product need.
+
+## Structure
+
+```text
+src/components/       Static brand/layout components and the React island
+src/data/             Typed navigation, content, and Solution Finder options
+src/layouts/          Shared metadata, schema, header, and footer shell
+src/pages/            Static routes
+src/styles/           Design tokens and global responsive styles
+src/utils/            Safe contextual mailto generation
+public/assets/        Preserved legacy assets; not all are approved for use
+archive/              Pre-migration Angular working-tree snapshot
+docs/                 Audit, architecture, QA, security, and handover records
 ```
 
-## Building
+## Editing content
 
-To build the project run:
+- Landing copy and Solution Finder options: `src/data/site.ts` and `src/pages/index.astro`.
+- Case studies: existing Kantara/Sanlog naming and compositions are treated as pre-Astro source truth. Do not add further imagery, metrics, outcomes, or client claims until the approval TODOs in `docs/asset-inventory.md` are resolved.
+- Insights: current cards are explicitly an editorial roadmap, not published articles. Add reviewed pages before adding Article schema.
+- Solution Finder: keep data typed in `src/data/site.ts`; keep mailto generation centralized in `src/utils/mailto.ts`.
 
-```bash
-ng build
-```
+## Logo status
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+The approved Intuise master logo was not found. `BrandLogo.astro` is a centralized, temporary textual wordmark based on existing repository treatment. Do not recreate a symbol or treat the archived CSS `.brand-mark` as approved.
 
-## Running unit tests
+## Netlify
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- Build: `npm run build`
+- Publish: `dist`
+- Output: fully static; no adapter, Functions, Edge Functions, or SPA fallback
+- Node: 22
 
-```bash
-ng test
-```
+Connect the existing Netlify site, run a Deploy Preview, and complete the manual checks in `docs/netlify-deployment.md`. No secrets are required by the current application.
 
-## Running end-to-end tests
+## Security and limitations
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+The site sends no form data to a backend. Contact uses encoded `mailto:` links. CSP and security headers are configured in `netlify.toml`, but production header behavior and external Google Fonts require Deploy Preview verification. Client permissions, NDA status, testimonials, project outcomes, third-party logos, and the master logo remain manual approval blockers.

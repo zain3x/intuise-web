@@ -1,0 +1,383 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SolutionFinder from "../components/interactive/SolutionFinder";
+import {
+  audiences,
+  differentiators,
+  faqs,
+  process,
+  solutionOptions,
+} from "../data/site";
+import { buildProjectMailto } from "../utils/mailto";
+
+const title = "Intuise — Intuitive product experiences, designed and built";
+const description =
+  "Intuise is a UX, product, and frontend studio helping teams turn complex websites, web apps, internal tools, and workflows into intuitive digital systems.";
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Intuise UX Solution",
+    url: "https://intuise.com/",
+    email: "rindra@intuise.com",
+    description,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Intuise",
+    url: "https://intuise.com/",
+    inLanguage: "en",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    serviceType:
+      "UX strategy, product design, UX engineering, and frontend implementation",
+    provider: { "@type": "Organization", name: "Intuise UX Solution" },
+    areaServed: "Worldwide",
+    description,
+  },
+];
+---
+
+<BaseLayout {title} {description} {jsonLd}>
+  <div class="hero-stage">
+    <section id="top" class="hero section-dark" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">
+          UX Strategy · Product Design · Frontend Development
+        </p>
+        <h1 id="hero-title">
+          <em>Intuitive UI</em> for your app.
+        </h1>
+        <p class="hero-intro">
+          We help product teams, operations teams, and growing businesses create
+          interfaces that are easier to use, easier to maintain, and ready to
+          grow.
+        </p>
+        <div class="hero-actions">
+          <a class="button button-signal" href="#solutions"
+            >Explore Your Solution <span aria-hidden="true">↘</span></a
+          >
+          <a class="button button-secondary" href={buildProjectMailto()}
+            >Discuss a Project <span aria-hidden="true">↗</span></a
+          >
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <img
+          class="hero-visual-background"
+          src="/assets/Background-2.png"
+          width="1440"
+          height="900"
+          alt=""
+        />
+        <span class="visual-label">Design decisions</span>
+        <img
+          class="hero-visual-foreground"
+          src="/assets/item-dummy-1.png"
+          width="300"
+          height="450"
+          alt=""
+        />
+        <div class="visual-system">
+          <span>Understand</span><i></i><span>Shape</span><i></i><span
+            >Build</span
+          >
+        </div>
+        <strong>One connected system.<br />Less translation gap.</strong>
+        <span class="visual-source">Existing interface work · Kantara DSM</span>
+      </div>
+      <a class="scroll-cue" href="#who-we-help">Scroll to explore <i></i></a>
+    </section>
+  </div>
+
+  <section
+    id="who-we-help"
+    class="section section-paper"
+    aria-labelledby="audience-title"
+  >
+    <header class="section-heading">
+      <div>
+        <p class="eyebrow">Who we help</p><h2 id="audience-title">
+          When complexity starts getting in the way.
+        </h2>
+      </div><p>
+        Recognize the problem first. Then shape the smallest coherent system
+        that can improve it.
+      </p>
+    </header>
+    <div class="audience-grid">
+      {
+        audiences.map((item, index) => (
+          <article>
+            <>
+              <span>0{index + 1}</span>
+              <img
+                src={item.icon}
+                width="33"
+                height="33"
+                alt=""
+                loading="lazy"
+              />
+              <h3>{item.title}</h3>
+              <p>{item.problem}</p>
+              <strong>{item.outcome}</strong>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="work" class="section section-fog" aria-labelledby="work-title">
+    <header class="section-heading">
+      <div>
+        <p class="eyebrow">Featured case study</p><h2 id="work-title">
+          Proof should be specific—and publishable.
+        </h2>
+      </div><p>
+        Client permission, project naming, screenshots, and outcomes are
+        currently under verification.
+      </p>
+    </header>
+    <article class="case-gate">
+      <div class="case-visual case-visual-existing">
+        <img
+          src="/assets/sanlog-logistic.png"
+          width="300"
+          height="450"
+          alt="Existing Santoso Logistic website and content management interface composition"
+          loading="lazy"
+        />
+      </div>
+      <div class="case-content">
+        <p class="eyebrow">Release gate · No invented claims</p><h3>
+          Santoso Logistic website experience.
+        </h3><p>
+          The previous Intuise implementation presented this work as a company
+          website and CMS experience focused on content structure, responsive
+          UI, SEO-conscious organization, and maintainability. No new metric or
+          outcome has been added during migration.
+        </p><ol>
+          <li>Problem and context</li><li>Constraints and decisions</li><li>
+            Solution and verified outcome
+          </li>
+        </ol><a
+          class="text-link dark-link"
+          href={buildProjectMailto("Case study and relevant experience")}
+          >Ask for relevant experience ↗</a
+        >
+      </div>
+    </article>
+  </section>
+
+  <section
+    id="solutions"
+    class="section section-dark solution-section"
+    aria-labelledby="solutions-title"
+  >
+    <header class="section-heading">
+      <div>
+        <p class="eyebrow">What are you building?</p><h2 id="solutions-title">
+          Start with a direction, not a blank brief.
+        </h2>
+      </div><p>
+        Choose the closest project type. The direction updates without hiding
+        the core content from search engines or no-JavaScript visitors.
+      </p>
+    </header>
+    <SolutionFinder options={solutionOptions} client:idle />
+    <noscript
+      ><div class="noscript-options">
+        <h3>Solution directions</h3>{
+          solutionOptions.map((option) => (
+            <article>
+              <>
+                <h4>{option.label}</h4>
+                <p>{option.direction}</p>
+                <a href={buildProjectMailto(option.label)}>
+                  Discuss this direction
+                </a>
+              </>
+            </article>
+          ))
+        }
+      </div></noscript
+    >
+  </section>
+
+  <section
+    id="why-intuise"
+    class="section section-paper"
+    aria-labelledby="why-title"
+  >
+    <header class="section-heading">
+      <div>
+        <p class="eyebrow">Why Intuise</p><h2 id="why-title">
+          Small team. Enterprise-grade thinking.
+        </h2>
+      </div><p>
+        AI supports speed; product judgement, human review, and accountable
+        delivery define the work.
+      </p>
+    </header>
+    <div class="reason-list">
+      {
+        differentiators.map(([number, heading, body]) => (
+          <article>
+            <>
+              <span>{number}</span>
+              <h3>{heading}</h3>
+              <p>{body}</p>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section
+    id="process"
+    class="section section-fog"
+    aria-labelledby="process-title"
+  >
+    <header class="section-heading">
+      <div>
+        <p class="eyebrow">Our process</p><h2 id="process-title">
+          Decisions stay visible from brief to handover.
+        </h2>
+      </div><p>
+        Each stage produces something reviewable and keeps client teams close to
+        the decisions that matter.
+      </p>
+    </header>
+    <ol class="process-grid">
+      {
+        process.map(([number, heading, body]) => (
+          <li>
+            <>
+              <span>{number}</span>
+              <h3>{heading}</h3>
+              <p>{body}</p>
+            </>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section
+    class="section section-dark trust-section"
+    aria-labelledby="trust-title"
+  >
+    <header class="section-heading">
+      <div>
+        <p class="eyebrow">Trust through the work</p><h2 id="trust-title">
+          No borrowed logos. No invented testimonials.
+        </h2>
+      </div><p>
+        Until public endorsements are approved, trust is grounded in transparent
+        process and delivery standards.
+      </p>
+    </header>
+    <ul class="trust-grid">
+      <li>Accessible by default</li><li>Performance as UX</li><li>
+        Human review gates
+      </li><li>Documented decisions</li><li>Reusable foundations</li><li>
+        Client-owned handover
+      </li>
+    </ul>
+  </section>
+
+  <section class="section games-section" aria-labelledby="games-title">
+    <div>
+      <p class="eyebrow">Intuise Games · Exploration lab</p><h2
+        id="games-title"
+      >
+        Exploring the next interface beyond the screen.
+      </h2><p>
+        Games, 3D, spatial computing, and interaction experiments live as a
+        separate direction—not the headline offer of Intuise UX.
+      </p>
+    </div><a
+      class="button button-dark"
+      href={buildProjectMailto("Intuise Games exploration")}
+      >Ask about the lab <span aria-hidden="true">↗</span></a
+    >
+  </section>
+
+  <section
+    id="insights"
+    class="section section-paper"
+    aria-labelledby="insights-title"
+  >
+    <header class="section-heading">
+      <div>
+        <p class="eyebrow">Did you know?</p><h2 id="insights-title">
+          Practical notes behind intuitive systems.
+        </h2>
+      </div><p>
+        Editorial topics are shown as a roadmap until reviewed articles are
+        ready for publication.
+      </p>
+    </header>
+    <div class="insight-grid">
+      <article>
+        <span>Editorial roadmap</span><h3>
+          Design and code as one decision system
+        </h3><p>
+          How implementation constraints can improve—not dilute—product
+          decisions.
+        </p>
+      </article><article>
+        <span>Editorial roadmap</span><h3>
+          AI speed still needs a human gate
+        </h3><p>
+          Where automation helps, and where judgement must remain accountable.
+        </p>
+      </article><article>
+        <span>Editorial roadmap</span><h3>
+          Performance is part of the interface
+        </h3><p>
+          Why loading, stability, and responsiveness shape trust and
+          comprehension.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section section-fog" aria-labelledby="faq-title">
+    <header class="section-heading">
+      <div>
+        <p class="eyebrow">FAQ & principles</p><h2 id="faq-title">
+          Clear expectations before engagement.
+        </h2>
+      </div>
+    </header>
+    <div class="faq-grid">
+      {
+        faqs.map(([question, answer]) => (
+          <details>
+            <>
+              <summary>{question}</summary>
+              <p>{answer}</p>
+            </>
+          </details>
+        ))
+      }
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section" aria-labelledby="contact-title">
+    <p class="eyebrow">Start a conversation</p><h2 id="contact-title">
+      What should feel more intuitive?
+    </h2><p>
+      Share what you are building, where the experience gets complicated, and
+      the outcome your team needs.
+    </p><a class="button button-dark" href={buildProjectMailto()}
+      >Email rindra@intuise.com <span aria-hidden="true">↗</span></a
+    >
+  </section>
+</BaseLayout>

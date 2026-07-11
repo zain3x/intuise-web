@@ -30,6 +30,9 @@ yarn-error.log
 
 # Miscellaneous
 /.angular/cache
+.astro/
+.netlify/
+.claude/
 .sass-cache/
 /connect.lock
 /coverage

@@ -1,0 +1,15 @@
+# Intuise UX Solution
+
+Intuise is a UX, product, and frontend studio based in Jakarta and working remotely.
+It helps teams make complex websites, web applications, internal tools, and digital workflows more intuitive.
+
+Primary services:
+- UX strategy and product design
+- Information architecture and interaction design
+- UX engineering and responsive frontend
+- Design systems, accessibility, performance, documentation, and handover
+
+Contact: rindra@intuise.com
+Canonical website: https://intuise.com/
+
+Claims, case studies, client logos, testimonials, and metrics are published only after verification and permission.
