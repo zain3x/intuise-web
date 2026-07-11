@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Added an isolated `/legacy/` Astro route as a manual visual reference for the previous Intuise site.
+- Excluded unverified client logos, placeholder testimonials, and sensitive product imagery from the legacy reconstruction.
+
 ## Unreleased — Angular to Astro migration
 
 ### Added

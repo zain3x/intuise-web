@@ -1,0 +1,236 @@
+---
+import LegacyLayout from "../../layouts/LegacyLayout.astro";
+
+const solutions = [
+  {
+    title: "Website and company profile",
+    text: "Clear structure for business information, services, and contact paths.",
+  },
+  {
+    title: "Product interface",
+    text: "Focused screens and flows for products that need to feel easier to use.",
+  },
+  {
+    title: "Internal workflow",
+    text: "Practical interface direction for recurring operational work.",
+  },
+];
+
+const values = [
+  {
+    icon: "/assets/intuitive.svg",
+    title: "Intuitive",
+    text: "Make the next action clear and reduce unnecessary effort.",
+  },
+  {
+    icon: "/assets/proffesional.svg",
+    title: "Professional",
+    text: "Use a coherent visual system that teams can maintain.",
+  },
+  {
+    icon: "/assets/user_proven.svg",
+    title: "User proven",
+    text: "Review important decisions with real context and feedback.",
+  },
+  {
+    icon: "/assets/user_understand.svg",
+    title: "User understanding",
+    text: "Start from the people, tasks, and constraints behind the screen.",
+  },
+];
+
+const process = [
+  "Competitive research",
+  "Interface direction",
+  "Prototype",
+  "Review and handover",
+];
+const insights = [
+  "Crafting seamless experiences through UI and UX",
+  "User-centered design for growing digital products",
+  "Connecting design decisions with frontend implementation",
+];
+---
+
+<LegacyLayout
+  title="Intuise Legacy Visual Reference"
+  description="A static visual reference preserving the previous Intuise website atmosphere."
+>
+  <header class="legacy-header">
+    <a class="legacy-brand" href="#legacy-top" aria-label="Intuise UX Solution">
+      <strong>INTUISE</strong><span>UX Solution</span>
+    </a>
+    <nav aria-label="Legacy reference navigation">
+      <a href="#legacy-about">About Us</a><a href="#legacy-solutions"
+        >Products</a
+      ><a href="#legacy-contact">Contact Us</a>
+    </nav>
+    <details class="legacy-menu">
+      <summary aria-label="Open menu"><i></i><i></i><i></i></summary><nav>
+        <a href="#legacy-about">About Us</a><a href="#legacy-solutions"
+          >Products</a
+        ><a href="#legacy-contact">Contact Us</a>
+      </nav>
+    </details>
+  </header>
+
+  <main id="legacy-main">
+    <section class="legacy-hero" id="legacy-top">
+      <div class="legacy-reference-label">Legacy visual reference</div>
+      <div class="legacy-hero-copy">
+        <h1><em>Intuitive</em> UI For<br /><span>Your Apps</span></h1>
+        <p>
+          This reference preserves the older Intuise composition and visual
+          rhythm. Copy has been adapted where the original used placeholder
+          text.
+        </p>
+        <a class="legacy-button" href="#legacy-solutions">Read More</a>
+      </div>
+      <div
+        class="legacy-device"
+        aria-label="Neutral responsive interface placeholder"
+      >
+        <div class="legacy-phone"><i></i><b></b><b></b><b></b></div>
+        <div class="legacy-screen">
+          <span></span><i></i><i></i><i></i><i></i>
+        </div>
+      </div>
+    </section>
+
+    <div class="legacy-flow">
+      <section class="legacy-section" id="legacy-solutions">
+        <header class="legacy-title">
+          <h2><em>Our</em> Solution</h2><p>
+            Legacy cards retained with neutral, non-client content.
+          </p>
+        </header>
+        <div class="legacy-solution-grid">
+          {
+            solutions.map((item, index) => (
+              <article>
+                <>
+                  <span>0{index + 1}</span>
+                  <div class="legacy-card-art" aria-hidden="true">
+                    <>
+                      <i />
+                      <i />
+                      <i />
+                    </>
+                  </div>
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </>
+              </article>
+            ))
+          }
+        </div>
+        <a class="legacy-button" href="#legacy-about">Browse More</a>
+      </section>
+
+      <section class="legacy-section" id="legacy-about">
+        <header class="legacy-title">
+          <h2>Why Choose <em>Us</em></h2><p>
+            The original translucent value-card treatment is preserved without
+            unverified claims.
+          </p>
+        </header>
+        <div class="legacy-value-grid">
+          {
+            values.map((item) => (
+              <article>
+                <>
+                  <img src={item.icon} width="32" height="32" alt="" />
+                  <h3>{item.title}</h3>
+                  <p>{item.text}</p>
+                </>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="legacy-section legacy-process">
+        <header class="legacy-title">
+          <h2>Our <em>Process</em></h2><p>
+            A concise adaptation of the older stepper.
+          </p>
+        </header>
+        <ol>
+          {
+            process.map((item, index) => (
+              <li>
+                <>
+                  <span>{index + 1}</span>
+                  <strong>{item}</strong>
+                </>
+              </li>
+            ))
+          }
+        </ol>
+        <p>
+          From early research through review and handover, each step keeps the
+          interface grounded in a clear problem.
+        </p>
+      </section>
+
+      <section class="legacy-section legacy-withheld">
+        <header class="legacy-title">
+          <h2>They Use <em>Our Service</em></h2>
+        </header>
+        <div>
+          <strong>Legacy proof area withheld</strong><p>
+            The previous page used placeholder testimonials and third-party
+            logos whose permission and relationship are not verified.
+          </p>
+        </div>
+      </section>
+
+      <section class="legacy-section legacy-insights">
+        <header class="legacy-title"><h2><em>Did You</em> Know?</h2></header>
+        <div>
+          {
+            insights.map((title, index) => (
+              <article>
+                <>
+                  <span>0{index + 1}</span>
+                  <h3>{title}</h3>
+                  <p>
+                    Editorial placeholder retained to show the former content
+                    rhythm. No article is represented as published.
+                  </p>
+                </>
+              </article>
+            ))
+          }
+        </div>
+      </section>
+
+      <section class="legacy-contact" id="legacy-contact">
+        <h2><em>Have</em> Any Project<br /><em>in mind?</em></h2>
+        <p>Tell us what should become easier for your users or your team.</p>
+        <a
+          class="legacy-button"
+          href="mailto:rindra@intuise.com?subject=Project%20discussion"
+          >Contact Us</a
+        >
+      </section>
+    </div>
+  </main>
+
+  <footer class="legacy-footer">
+    <div>
+      <a class="legacy-brand legacy-brand-large" href="#legacy-top"
+        ><strong>INTUISE</strong><span>UX Solution</span></a
+      ><p>Clear interfaces for useful digital products.</p>
+    </div>
+    <nav aria-label="Legacy footer navigation">
+      <a href="#legacy-about">About Us</a><a href="#legacy-solutions">Product</a
+      ><a href="#legacy-contact">Contact</a>
+    </nav>
+    <div>
+      <strong>Want to talk with us?</strong><a href="mailto:rindra@intuise.com"
+        >rindra@intuise.com</a
+      >
+    </div>
+  </footer>
+</LegacyLayout>

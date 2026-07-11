@@ -20,3 +20,5 @@
 - Google-hosted Manrope and Inter remain for continuity. Local font licensing/files were not available.
 
 Manual approval is required for the logo, photography ownership, client imagery, third-party marks, and any future magenta/violet expansion.
+
+The `/legacy/` route preserves the older Work Sans, uppercase, tosca-on-ink atmosphere for comparison. It uses the same temporary textual wordmark policy and omits unverified third-party proof and sensitive device imagery.

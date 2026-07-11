@@ -37,3 +37,7 @@ All 27 source assets are preserved unchanged under `archive/angular-working-tree
 ## Logo search result
 
 No dedicated Intuise logo file was found by filename, SVG content, template reference, CSS background, current tracked history, or public assets. The production migration therefore uses a centralized temporary textual wordmark in `src/components/brand/BrandLogo.astro`. It is not an approved master logo and must be replaced when the brand authority file is supplied.
+
+## Legacy route usage
+
+`/legacy/` reuses only the two approved-for-reference backgrounds and four existing value icons already published under `public/assets/`. It does not publish archived third-party logos, placeholder testimonial portraits, Prime/Kantara device imagery, or photography with unclear ownership. The omitted visual regions use neutral CSS placeholders rather than duplicate assets.

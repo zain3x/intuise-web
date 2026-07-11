@@ -28,6 +28,10 @@ Run the site and open `http://localhost:4321/design-system/` for the living foun
 
 Tokens live in `src/styles/tokens.css`, shared primitives in `src/styles/global.css`, and route-specific documentation layout in `src/styles/design-system.css`. Keep the system small: add a token or component only when it solves a repeated product need.
 
+## Legacy visual reference
+
+`/legacy/` preserves the previous website atmosphere as isolated static Astro markup. It is not linked from public navigation and does not restore Angular. Provenance decisions and known differences are documented in `docs/legacy-page.md`. Search-engine prevention is intentionally deferred to a separate task.
+
 ## Structure
 
 ```text
