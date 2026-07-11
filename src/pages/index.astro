@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SolutionFinder from "../components/interactive/SolutionFinder";
+import heroBackground from "../assets/hero/background.png";
+import heroForeground from "../assets/hero/frontimage.png";
 import {
   audiences,
   differentiators,
@@ -44,6 +46,16 @@ const jsonLd = [
 <BaseLayout {title} {description} {jsonLd}>
   <div class="hero-stage">
     <section id="top" class="hero section-dark" aria-labelledby="hero-title">
+      <img
+        class="hero-background"
+        src={heroBackground.src}
+        width={heroBackground.width}
+        height={heroBackground.height}
+        alt=""
+        loading="eager"
+        fetchpriority="high"
+        decoding="async"
+      />
       <div class="hero-copy">
         <p class="eyebrow">
           UX Strategy · Product Design · Frontend Development
@@ -65,29 +77,16 @@ const jsonLd = [
           >
         </div>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <img
-          class="hero-visual-background"
-          src="/assets/Background-2.png"
-          width="1440"
-          height="900"
-          alt=""
-        />
-        <span class="visual-label">Design decisions</span>
+      <div class="hero-visual">
         <img
           class="hero-visual-foreground"
-          src="/assets/item-dummy-1.png"
-          width="300"
-          height="450"
-          alt=""
+          src={heroForeground.src}
+          width={heroForeground.width}
+          height={heroForeground.height}
+          alt="Responsive product interface shown across desktop, tablet, and mobile devices"
+          loading="eager"
+          decoding="async"
         />
-        <div class="visual-system">
-          <span>Understand</span><i></i><span>Shape</span><i></i><span
-            >Build</span
-          >
-        </div>
-        <strong>One connected system.<br />Less translation gap.</strong>
-        <span class="visual-source">Existing interface work · Kantara DSM</span>
       </div>
       <a class="scroll-cue" href="#who-we-help">Scroll to explore <i></i></a>
     </section>

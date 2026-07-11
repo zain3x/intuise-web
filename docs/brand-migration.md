@@ -9,7 +9,7 @@
 ## Adapted
 
 - Mobile hero removes the large visual panel to avoid clipping; the next section remains visible as a scroll cue.
-- Precision/grid language is recreated through layout lines while the visual background reuses `Background-2.png`.
+- Precision/grid language is recreated through layout lines. The current landing hero uses the user-supplied `src/assets/hero/background.png` and `frontimage.png`; preserved legacy backgrounds remain available for other existing compositions.
 - Client proof is replaced by a transparent publication gate until permission and outcomes are verified.
 - The migrated visual language is codified as a small foundation in `src/styles/tokens.css` and documented at `/design-system`. Existing landing-page decisions remain the baseline consumer; this does not introduce a new brand direction.
 
