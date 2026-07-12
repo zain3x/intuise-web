@@ -6,10 +6,10 @@
 
 ## Visual source
 
-- Primary source branch: local `main` at `a37fa58`.
-- Candidate compared: local `develop` at `fc0bdbf`; it is an earlier Angular starting point and was not selected.
-- Files read with `git show`: `src/app/app.component.html`, `src/app/app.component.scss`, `src/app/home/home.component.html`, `src/app/home/home.component.scss`, `src/app/home/home.component.ts`, `src/styles.scss`, and `src/variable.scss`.
-- The archived equivalents in `archive/angular-working-tree/` remain the provenance and rollback snapshot.
+- Branches compared: local `main` at `a37fa58` and `develop` at `fc0bdbf`. Both contain an older Tailwind-oriented direction that does not match the final pre-migration QA screenshots.
+- Primary visual source: `archive/angular-working-tree/`, captured from the final Angular working tree immediately before migration.
+- Files used: `src/app/app.component.html`, `src/app/app.component.scss`, `src/app/home/home.component.html`, `src/app/home/home.component.scss`, `src/app/home/home.component.ts`, `src/styles.scss`, and `src/variable.scss` inside the archive.
+- Visual checks: `docs/audit/01-current-desktop.png`, `02-current-selected-work.png`, and `03-current-mobile.png`.
 
 No branch was checked out, merged, rebased, or cherry-picked.
 
@@ -18,13 +18,12 @@ No branch was checked out, merged, rebased, or cherry-picked.
 ### Reused
 
 - `/assets/background.png`: legacy city hero atmosphere.
-- `/assets/Background-2.png`: final legacy CTA atmosphere.
-- `/assets/intuitive.svg`, `/assets/proffesional.svg`, `/assets/user_proven.svg`, `/assets/user_understand.svg`: existing value illustrations.
+- `src/assets/hero/frontimage.png`: existing product composition reused through Astro import for the framed hero panel.
 
 ### Adapted
 
-- Device showcase: replaced with a neutral CSS-rendered responsive interface composition because the old Prime/Kantara imagery is not approved for this route.
-- Solution thumbnails: replaced with neutral gradient interface blocks.
+- Hero work panel: uses the approved current interface composition in place of the archived Kantara image.
+- Project thumbnails: replaced with neutral CSS interface compositions.
 - Placeholder copy: replaced with short neutral copy while preserving approximate line lengths and hierarchy.
 
 ### Skipped or requires approval
@@ -32,44 +31,44 @@ No branch was checked out, merged, rebased, or cherry-picked.
 - `iphone-showcase.png`, `Device-Macbook-Pro.png`, and Kantara compositions: possible ownership/NDA concerns.
 - `Photo-1.png` through `Photo-4.png`: photography ownership is unclear.
 - `image_20.png` through `image_24.png`: Microsoft, ThinkPad, GitLab, GOTO, and an unidentified mark; no verified client relationship or permission.
-- Original testimonial cards: contained placeholder people, quotes, and roles, so the area is represented by an explicit withheld-proof panel.
+- Original project names and detailed claims are replaced with neutral descriptions.
 
 No asset was duplicated for the legacy route.
 
 ## Preserved visual elements
 
-- Near-black background, bright tosca, muted gray text, and limited pink influence.
+- Near-black, warm paper/fog surfaces, bright tosca, muted gray text, and restrained grid lines.
 - Tight textual Intuise / UX Solution wordmark treatment.
-- Sticky dark header, uppercase navigation, large uppercase hero, underline accent, gradient-border CTA, translucent cards, large vertical gaps, stepper, insight rhythm, atmospheric CTA, and multi-column footer.
-- Section order: hero, solutions, values, process, proof area, insights, final contact, footer.
+- Fixed dark header, editorial Manrope hero, framed selected-work panel, light project sections, capability rows, design/engineering bridge statement, four-step process, about geometry, signal contact section, and minimal footer.
+- Section order: hero, selected work, services, advantage bridge, approach, about, contact, footer.
 
 ## Technical differences
 
 - Astro static HTML replaces Angular templates and runtime.
 - No Angular dependencies, Angular CLI, animations package, router, SPA fallback, iframe, or second build system.
 - Native `details` provides the small-screen menu without JavaScript or hydration.
-- Tailwind utility classes were rewritten as isolated CSS.
+- Archived component SCSS was translated into scoped Astro styles.
 - Fake testimonials, unverifiable logos, and sensitive project imagery were not reproduced.
 
 ## Isolation and accessibility
 
-`LegacyLayout.astro` loads only `legacy.css`; selectors are namespaced with `.legacy-*` and the body uses `.legacy-page`. The main site's global stylesheet is not imported. The page provides semantic landmarks, one H1, sequential headings, native links/details, visible focus, a skip link, contrast-safe copy, meaningful or decorative labeling, and a reduced-motion fallback.
+`LegacyLayout.astro` loads the existing legacy base stylesheet, while the refined page styles are Astro-scoped and rooted at `.legacy-root`. The main site's global stylesheet is not imported. The page provides semantic landmarks, one H1, sequential headings, native links/details, visible focus, a skip link, contrast-safe copy, meaningful or decorative labeling, and a reduced-motion fallback.
 
 ## Responsive behavior
 
-- Desktop: two-column hero, three solution cards, four value cards, horizontal process, editorial insight grid.
-- Tablet: reduced hero visual, two-column cards, two-column footer.
-- Mobile: copy precedes a smaller neutral device composition, cards stack, process becomes vertical, menu uses native details, and background attachment becomes static.
+- Desktop: two-column hero, alternating two-column project rows, capability matrix, horizontal process, and editorial about/contact layouts.
+- Tablet: narrower hero panel, balanced project columns, and two-column process.
+- Mobile: copy precedes the framed product visual, project rows stack, capability rows simplify, process becomes vertical, and menu uses native details.
 
 ## Known limitations
 
 - The page preserves atmosphere rather than exact Angular rendering.
-- Original Work Sans/Inter are loaded from Google Fonts because local licensed files are unavailable.
-- The CSS device placeholder does not reproduce any real product UI.
+- Manrope and Inter are loaded from Google Fonts because local licensed files are unavailable.
+- Sensitive archived project imagery is represented through the approved current composition or neutral CSS art, so visual fidelity is structural rather than pixel-identical.
 - Search-engine prevention is intentionally not implemented in this task and must be handled separately.
 
 ## Maintenance
 
-To update the route, edit `src/pages/legacy/index.astro`, `src/styles/legacy.css`, and this record together. Re-run `npm run validate`, production build, and responsive QA.
+To update the route, edit `src/pages/legacy/index.astro`, `src/layouts/LegacyLayout.astro`, and this record together. Shared legacy base CSS should change only when the layout shell itself changes. Re-run `npm run validate`, production build, and responsive QA.
 
 To remove it, delete `src/pages/legacy/index.astro`, `src/layouts/LegacyLayout.astro`, `src/styles/legacy.css`, this documentation, and the three `docs/qa/legacy-*.png` screenshots; then remove the README/CHANGELOG references and rebuild.
