@@ -40,4 +40,4 @@ No dedicated Intuise logo file was found by filename, SVG content, template refe
 
 ## Legacy route usage
 
-`/legacy/` reuses only the two approved-for-reference backgrounds and four existing value icons already published under `public/assets/`. It does not publish archived third-party logos, placeholder testimonial portraits, Prime/Kantara device imagery, or photography with unclear ownership. The omitted visual regions use neutral CSS placeholders rather than duplicate assets.
+`/legacy/` now builds the pre-migration Angular snapshot from its own `legacy/src/assets/` folder. These files reproduce assets that were already present in the public `main` snapshot at `a37fa58`; they are isolated from the Astro asset pipeline. Permission and provenance review for third-party marks, testimonial imagery, and project screenshots remains required in a follow-up task.

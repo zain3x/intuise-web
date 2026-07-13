@@ -20,7 +20,7 @@ npm run validate
 npm run security:audit
 ```
 
-`validate` runs Astro check, ESLint, Prettier check, unit tests, and the production build. Output is written to `dist/`.
+`validate` runs Astro check, ESLint, Prettier check, unit tests, and the combined production build. Astro is written to `dist/`; the separate Angular project is built and assembled under `dist/legacy/`.
 
 ## Design system
 
@@ -30,7 +30,7 @@ Tokens live in `src/styles/tokens.css`, shared primitives in `src/styles/global.
 
 ## Legacy visual reference
 
-`/legacy/` preserves the previous website atmosphere as isolated static Astro markup. It is not linked from public navigation and does not restore Angular. Provenance decisions and known differences are documented in `docs/legacy-page.md`. Search-engine prevention is intentionally deferred to a separate task.
+`/legacy/` is built from the separate Angular project in `legacy/`, sourced from the pre-migration `main` snapshot at `a37fa58`. It is assembled beneath the Astro output during `npm run build` and is not linked from public navigation. Provenance decisions and known differences are documented in `docs/legacy-page.md`.
 
 ## Structure
 
@@ -43,6 +43,8 @@ src/styles/           Design tokens and global responsive styles
 src/utils/            Safe contextual mailto generation
 public/assets/        Preserved legacy assets; not all are approved for use
 archive/              Pre-migration Angular working-tree snapshot
+legacy/               Independently installed and built Angular visual archive
+scripts/              Build assembly utilities
 docs/                 Audit, architecture, QA, security, and handover records
 ```
 

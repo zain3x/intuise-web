@@ -2,8 +2,8 @@
 
 ## Unreleased
 
-- Added an isolated `/legacy/` Astro route as a manual visual reference for the previous Intuise site.
-- Excluded unverified client logos, placeholder testimonials, and sensitive product imagery from the legacy reconstruction.
+- Restored the pre-migration Angular site as an independently built `legacy/` subproject served from `/legacy/`.
+- Added a combined Astro and Angular build that assembles the legacy bundle beneath `dist/legacy/`.
 
 ## Unreleased — Angular to Astro migration
 

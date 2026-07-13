@@ -7,6 +7,7 @@ export default [
     ignores: [
       "dist/**",
       "archive/**",
+      "legacy/**",
       "node_modules/**",
       ".astro/**",
       ".angular/**",
