@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import BrandLogo from "../components/brand/BrandLogo.astro";
+import LogoConcept from "../components/brand/LogoConcept.astro";
 import Button from "../components/ui/Button.astro";
 import "../styles/design-system.css";
 
@@ -154,7 +155,128 @@ const spacing = [
   ["64", "4rem"],
   ["96", "--space-96"],
 ];
-const nav = ["Foundation", "Components", "Patterns", "Content & access"];
+const logoConcepts = [
+  {
+    id: 1,
+    name: "Prism Lens",
+    style: "Geometric / negative space",
+    thesis: "Two viewpoints meet to reveal a clearer path.",
+    product:
+      "Expresses synthesis: research and delivery converging in one system.",
+    marketing: "A bold silhouette with a memorable reveal at campaign scale.",
+    ux: "Keeps its structure at 16px and works in one color.",
+    risk: "The angular energy can feel more technical than human.",
+    tags: ["Scalable", "Distinctive", "Master brand"],
+  },
+  {
+    id: 2,
+    name: "Intuitive Loop",
+    style: "Continuous / human",
+    thesis: "A continuous learning loop that gets smarter with every cycle.",
+    product: "Fits discovery, iteration, playtesting, and product improvement.",
+    marketing:
+      "Motion-ready and easy to turn into a recognizable brand gesture.",
+    ux: "Friendly curves balance Intuise’s precise interface language.",
+    risk: "Needs careful spacing to avoid looking like a generic infinity mark.",
+    tags: ["Motion-ready", "Friendly", "Iterative"],
+  },
+  {
+    id: 3,
+    name: "Signal I",
+    style: "Monogram / signal",
+    thesis: "An I that sends and receives signals from people.",
+    product: "Connects research insight with responsive digital products.",
+    marketing: "A direct initial makes name recall effortless.",
+    ux: "Designed for app icons, avatars, favicons, and status surfaces.",
+    risk: "The broadcast metaphor may skew toward telecom without context.",
+    tags: ["Favicon-first", "Recognizable", "Digital"],
+  },
+  {
+    id: 4,
+    name: "Open Portal",
+    style: "Architectural / confident",
+    thesis: "A doorway into products that feel obvious to use.",
+    product: "Frames Intuise as an enabler across UX and game experiences.",
+    marketing: "Ownable silhouette supports bold, editorial compositions.",
+    ux: "Strong container remains legible on noisy product surfaces.",
+    risk: "The heavy form needs a lighter wordmark to stay approachable.",
+    tags: ["Confident", "Platform", "Editorial"],
+  },
+  {
+    id: 5,
+    name: "Insight Orbit",
+    style: "Orbital / dynamic",
+    thesis: "Ideas become clearer as perspectives orbit the problem.",
+    product: "Suggests an ecosystem instead of a single service line.",
+    marketing: "Naturally creates motion, depth, and launch storytelling.",
+    ux: "Circular footprint fits stores, social profiles, and launchers.",
+    risk: "Fine orbital lines require an optical small-size variant.",
+    tags: ["Ecosystem", "Expressive", "Motion-ready"],
+  },
+  {
+    id: 6,
+    name: "Modular Four",
+    style: "Systemic / modular",
+    thesis: "Four simple parts can assemble into many useful experiences.",
+    product: "Mirrors a reusable design-system and multi-product mindset.",
+    marketing: "Modules become a flexible graphic language beyond the logo.",
+    ux: "Pixel-aligned geometry is reliable across interface sizes.",
+    risk: "Grid marks are common; proprietary motion and proportion are essential.",
+    tags: ["Design system", "Flexible", "Product-led"],
+  },
+  {
+    id: 7,
+    name: "Curious Fold",
+    style: "Dimensional / crafted",
+    thesis: "One surface folds into an unexpected, useful perspective.",
+    product: "Communicates transformation without losing practical structure.",
+    marketing: "Premium and tactile, with strong 3D and campaign potential.",
+    ux: "A flat silhouette survives monochrome use; color adds depth.",
+    risk: "More visual detail means stricter rules below 24px.",
+    tags: ["Premium", "Transformative", "Tactile"],
+  },
+  {
+    id: 8,
+    name: "Human Spark",
+    style: "Radial / optimistic",
+    thesis: "The moment a human insight unlocks new possibilities.",
+    product: "Places insight at the center of a connected workflow.",
+    marketing: "Energetic enough for Games while credible for UX consulting.",
+    ux: "The compact center remains the anchor at small sizes.",
+    risk: "Radiating lines can feel busy in dense navigation.",
+    tags: ["Optimistic", "Connected", "Energetic"],
+  },
+  {
+    id: 9,
+    name: "Dialogue I",
+    style: "Conversational / approachable",
+    thesis: "Better experiences start by listening before making.",
+    product: "Centers the user interview, feedback, and collaboration loop.",
+    marketing: "A clear story for a human-centered brand promise.",
+    ux: "Simple container and monogram read instantly in support surfaces.",
+    risk: "Speech bubbles are familiar, so the internal I must carry distinction.",
+    tags: ["Human-centered", "Clear", "Approachable"],
+  },
+  {
+    id: 10,
+    name: "Cut Through",
+    style: "Editorial / disruptive",
+    thesis: "Cut through complexity to find the useful signal.",
+    product: "Positions Intuise as decisive, focused, and outcome-oriented.",
+    marketing: "High contrast makes a confident signature in launch creative.",
+    ux: "Horizontal construction pairs naturally with navigation and wordmarks.",
+    risk: "Its assertive tone is less warm than the other directions.",
+    tags: ["Bold", "Focused", "Editorial"],
+  },
+];
+
+const nav = [
+  ["Logo lab", "logo-lab"],
+  ["Foundation", "foundation"],
+  ["Components", "components"],
+  ["Patterns", "patterns"],
+  ["Content & access", "content-access"],
+];
 ---
 
 <BaseLayout
@@ -168,15 +290,7 @@ const nav = ["Foundation", "Components", "Patterns", "Content & access"];
       <a class="ds-brand" href="#ds-top"><BrandLogo compact /></a>
       <p class="ds-status">Foundation v0.1<br />Internal reference</p>
       <nav>
-        {
-          nav.map((item) => (
-            <a
-              href={`#${item.toLowerCase().replaceAll(" ", "-").replace("-&-", "-")}`}
-            >
-              {item}
-            </a>
-          ))
-        }
+        {nav.map(([label, href]) => <a href={`#${href}`}>{label}</a>)}
       </nav>
       <a class="ds-back" href="/">← Back to Intuise</a>
     </aside>
@@ -191,10 +305,164 @@ const nav = ["Foundation", "Components", "Patterns", "Content & access"];
           reusable decisions over a large component catalogue.
         </p>
         <div class="ds-notice">
-          <strong>Temporary brand treatment.</strong> The textual wordmark is a centralized
-          fallback until an approved master logo is available.
+          <strong>Brand exploration in progress.</strong> Ten system-ready directions
+          below test one Intuise master brand with extensible UX and Games signatures.
         </div>
       </header>
+
+      <section class="ds-section logo-lab" id="logo-lab">
+        <div class="ds-heading">
+          <span>00</span><div>
+            <p>Logo exploration</p><h2>
+              One Intuise. Many possible signatures.
+            </h2>
+          </div>
+        </div>
+
+        <div class="logo-lab-intro">
+          <p>
+            These are strategic directions, not final artwork. Every concept is
+            tested as a parent brand first, then as <strong>Intuise UX</strong> and
+            <strong>Intuise Games</strong>. The shared mark builds recognition;
+            product names and accent color create distinction.
+          </p>
+          <dl>
+            <div>
+              <dt>Product</dt><dd>Can it grow into a multi-product system?</dd>
+            </div>
+            <div>
+              <dt>Marketing</dt><dd>Is the story memorable and ownable?</dd>
+            </div>
+            <div>
+              <dt>UI/UX</dt><dd>Does it hold up at 16px and in one color?</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="logo-grid">
+          {
+            logoConcepts.map((concept) => (
+              <article class="logo-card">
+                <header class="logo-card-meta">
+                  <span>{String(concept.id).padStart(2, "0")}</span>
+                  <p>{concept.style}</p>
+                </header>
+
+                <div class="logo-stage">
+                  <div class="logo-lockup">
+                    <LogoConcept concept={concept.id} />
+                    <strong>intuise</strong>
+                  </div>
+                  <div class="favicon-test" title="32px favicon test">
+                    <LogoConcept concept={concept.id} size="small" />
+                  </div>
+                </div>
+
+                <div class="logo-card-copy">
+                  <h3>{concept.name}</h3>
+                  <p class="logo-thesis">{concept.thesis}</p>
+                  <div class="logo-lenses">
+                    <p>
+                      <strong>Product</strong>
+                      {concept.product}
+                    </p>
+                    <p>
+                      <strong>Marketing</strong>
+                      {concept.marketing}
+                    </p>
+                    <p>
+                      <strong>UI/UX</strong>
+                      {concept.ux}
+                    </p>
+                  </div>
+                  <p class="logo-risk">
+                    <strong>Watch:</strong> {concept.risk}
+                  </p>
+                  <ul class="logo-tags">
+                    {concept.tags.map((tag) => (
+                      <li>{tag}</li>
+                    ))}
+                  </ul>
+                </div>
+
+                <footer
+                  class="brand-family"
+                  aria-label={`${concept.name} brand family test`}
+                >
+                  <div>
+                    <LogoConcept
+                      concept={concept.id}
+                      size="small"
+                      accent="core"
+                      label="Intuise"
+                    />
+                    <span>
+                      <strong>intuise</strong>
+                    </span>
+                  </div>
+                  <div>
+                    <LogoConcept
+                      concept={concept.id}
+                      size="small"
+                      accent="ux"
+                      label="Intuise UX"
+                    />
+                    <span>
+                      <strong>intuise</strong> ux
+                    </span>
+                  </div>
+                  <div>
+                    <LogoConcept
+                      concept={concept.id}
+                      size="small"
+                      accent="games"
+                      label="Intuise Games"
+                    />
+                    <span>
+                      <strong>intuise</strong> games
+                    </span>
+                  </div>
+                </footer>
+              </article>
+            ))
+          }
+        </div>
+
+        <article class="logo-research">
+          <div>
+            <p class="ds-kicker">Research synthesis</p>
+            <h3>Built as a family, judged as a product asset.</h3>
+          </div>
+          <p>
+            The directions prioritize a recognizable parent mark, shared
+            geometry across sub-brands, optical clarity at interface sizes, and
+            a visual idea that can extend into motion and campaign layouts.
+          </p>
+          <ul>
+            <li>
+              <a
+                href="https://www.atlassian.com/blog/announcements/our-bold-new-brand"
+                >Atlassian</a
+              > — unique product marks can still feel like one family and remain legible
+              at any size.
+            </li>
+            <li>
+              <a href="https://mozilla.design/firefox/logos-usage/">Firefox</a> —
+              parent and product brands share geometry, spacing, and usage rules.
+            </li>
+            <li>
+              <a href="https://brand.dropbox.com/logo">Dropbox</a> — a recognizable
+              glyph can also organize the wider visual system.
+            </li>
+            <li>
+              <a
+                href="https://www.atlassian.com/blog/design/behind-the-screens-building-atlassians-new-icon-system"
+                >Atlassian icon system</a
+              > — pixel alignment and optical sizing protect clarity in product UI.
+            </li>
+          </ul>
+        </article>
+      </section>
 
       <section class="ds-section" id="foundation">
         <div class="ds-heading">

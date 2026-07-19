@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">Intuise</title>
+  <desc id="desc">Two perspectives meeting to form an intuitive path</desc>
+  <defs>
+    <linearGradient id="left" x1="8" y1="8" x2="38" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8CE8EE"/>
+      <stop offset="1" stop-color="#13C6D4"/>
+    </linearGradient>
+    <linearGradient id="right" x1="56" y1="8" x2="27" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#C74F8A"/>
+      <stop offset="1" stop-color="#8555D9"/>
+    </linearGradient>
+  </defs>
+  <path fill="url(#left)" d="M5 32 22 6h15L20 32l17 26H22z"/>
+  <path fill="url(#right)" d="m59 32-17-26H27l17 26-17 26h15z"/>
+</svg>

@@ -1,6 +1,8 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SolutionFinder from "../components/interactive/SolutionFinder";
+import CaseStudy from "../components/portfolio/CaseStudy.astro";
+import IntuiseGames from "../components/games/IntuiseGames.astro";
 import heroBackground from "../assets/hero/background.png";
 import heroForeground from "../assets/hero/frontimage.png";
 import {
@@ -134,42 +136,71 @@ const jsonLd = [
     <header class="section-heading">
       <div>
         <p class="eyebrow">Featured case study</p><h2 id="work-title">
-          Proof should be specific—and publishable.
+          Interfaces shaped around real operational complexity.
         </h2>
       </div><p>
-        Client permission, project naming, screenshots, and outcomes are
-        currently under verification.
+        Two examples from the Intuise portfolio, presented without invented
+        outcomes or unapproved product details.
       </p>
     </header>
-    <article class="case-gate">
-      <div class="case-visual case-visual-existing">
-        <img
-          src="/assets/sanlog-logistic.png"
-          width="300"
-          height="450"
-          alt="Existing Santoso Logistic website and content management interface composition"
-          loading="lazy"
-        />
-      </div>
-      <div class="case-content">
-        <p class="eyebrow">Release gate · No invented claims</p><h3>
-          Santoso Logistic website experience.
-        </h3><p>
-          The previous Intuise implementation presented this work as a company
-          website and CMS experience focused on content structure, responsive
-          UI, SEO-conscious organization, and maintainability. No new metric or
-          outcome has been added during migration.
-        </p><ol>
-          <li>Problem and context</li><li>Constraints and decisions</li><li>
-            Solution and verified outcome
-          </li>
-        </ol><a
-          class="text-link dark-link"
-          href={buildProjectMailto("Case study and relevant experience")}
-          >Ask for relevant experience ↗</a
-        >
-      </div>
-    </article>
+    <CaseStudy
+      featured
+      index="01 / 02"
+      eyebrow="Primary featured case study"
+      metadata="Website Design · CMS Experience"
+      title="Santoso Logistic website experience"
+      description="A company website and CMS experience that organizes complex logistics content into a clearer, responsive, SEO-conscious, and maintainable public interface."
+      capabilities={[
+        "Content Structure",
+        "Responsive UI",
+        "CMS Experience",
+        "Maintainability",
+      ]}
+      images={[
+        {
+          src: "/assets/sanlog-logistic.png",
+          width: 300,
+          height: 450,
+          alt: "Santoso Logistic website and content management interface composition",
+          role: "primary",
+        },
+      ]}
+      href={buildProjectMailto("Santoso Logistic case study")}
+      linkLabel="Ask for relevant experience"
+    />
+    <CaseStudy
+      reverse
+      index="02 / 02"
+      eyebrow="Selected work"
+      metadata="Product Design · UI/UX"
+      title="Broadcast-like Content Management Platform"
+      description="A content management platform with broadcast-like workflows for calendar-based scheduling, live events, playlists, now playing, device synchronization, monitoring, app editing, and playback control."
+      capabilities={[
+        "Scheduling",
+        "Live Events",
+        "Playlists",
+        "Now Playing",
+        "Device Sync",
+        "Monitoring",
+        "App Editor",
+      ]}
+      images={[
+        {
+          src: "/assets/content-operations-editor.png",
+          width: 663,
+          height: 418,
+          alt: "Content operations editor with media library, composition canvas, timeline, and playback controls",
+          role: "editor",
+        },
+        {
+          src: "/assets/item-dummy-1.png",
+          width: 300,
+          height: 450,
+          alt: "Monitoring, scheduling, and multi-device management interface overview",
+          role: "overview",
+        },
+      ]}
+    />
   </section>
 
   <section
@@ -290,22 +321,7 @@ const jsonLd = [
     </ul>
   </section>
 
-  <section class="section games-section" aria-labelledby="games-title">
-    <div>
-      <p class="eyebrow">Intuise Games · Exploration lab</p><h2
-        id="games-title"
-      >
-        Exploring the next interface beyond the screen.
-      </h2><p>
-        Games, 3D, spatial computing, and interaction experiments live as a
-        separate direction—not the headline offer of Intuise UX.
-      </p>
-    </div><a
-      class="button button-dark"
-      href={buildProjectMailto("Intuise Games exploration")}
-      >Ask about the lab <span aria-hidden="true">↗</span></a
-    >
-  </section>
+  <IntuiseGames exploreHref={buildProjectMailto("Intuise Games exploration")} />
 
   <section
     id="insights"
