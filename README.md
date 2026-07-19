@@ -20,7 +20,7 @@ npm run validate
 npm run security:audit
 ```
 
-`validate` runs Astro check, ESLint, Prettier check, unit tests, and the combined production build. Astro is written to `dist/`; the separate Angular project is built and assembled under `dist/legacy/`.
+`validate` runs Astro check, ESLint, Prettier check, unit tests, and the production build. Astro is written to `dist/`. The Angular legacy application has its own repository and deployment pipeline.
 
 ## Design system
 
@@ -30,7 +30,7 @@ Tokens live in `src/styles/tokens.css`, shared primitives in `src/styles/global.
 
 ## Legacy visual reference
 
-`/legacy/` is built from the separate Angular project in `legacy/`, sourced from the pre-migration `main` snapshot at `a37fa58`. It is assembled beneath the Astro output during `npm run build` and is not linked from public navigation. Provenance decisions and known differences are documented in `docs/legacy-page.md`.
+`/legacy/` is owned by the independently deployed Angular project at `github.com/zain3x/intuise-legacy`. Netlify routes that path to the legacy deployment without coupling the Astro and Angular builds. The tracked `legacy/` directory is a migration snapshot and is no longer a production build input. Provenance decisions and known differences are documented in `docs/legacy-page.md`.
 
 ## Structure
 
@@ -43,8 +43,8 @@ src/styles/           Design tokens and global responsive styles
 src/utils/            Safe contextual mailto generation
 public/assets/        Preserved legacy assets; not all are approved for use
 archive/              Pre-migration Angular working-tree snapshot
-legacy/               Independently installed and built Angular visual archive
-scripts/              Build assembly utilities
+legacy/               Historical migration snapshot; not a production build input
+scripts/              Repository maintenance utilities
 docs/                 Audit, architecture, QA, security, and handover records
 ```
 

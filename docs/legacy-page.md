@@ -2,43 +2,39 @@
 
 ## Purpose and URL
 
-`/legacy/` preserves the former Intuise website as an independently built Angular application. The primary website remains Astro. The route is not linked from the primary navigation.
+`/legacy/` preserves the former Intuise website as an independently deployed Angular application. The primary website remains Astro, and the route is not linked from public navigation.
 
 ## Source
 
-- Visual authority: the user-supplied full-page screenshot of the former live Intuise.com.
-- Code authority: branch `main` at commit `a37fa58`.
-- Source location: `legacy/`.
-- No branch checkout, merge, rebase, or cherry-pick was used; the selected files were exported read-only from the commit.
+- Repository: `https://github.com/zain3x/intuise-legacy`
+- Code authority: the former `main` branch snapshot at commit `a37fa58`
+- Local sibling: `../intuise-legacy`
+- The tracked `legacy/` directory in this repository is a migration snapshot, not a production build input.
 
-## Build architecture
+## Deployment architecture
 
-1. `npm run build:astro` creates the primary static site in `dist/`.
-2. `npm run build:legacy` installs and builds the independent Angular project.
-3. `scripts/assemble-legacy.mjs` replaces the Astro placeholder route output with the Angular browser build at `dist/legacy/`.
+1. `intuise-web` builds and deploys the Astro site independently.
+2. `intuise-legacy` builds and deploys the Angular site independently.
+3. Netlify routes `/legacy` and `/legacy/*` from the primary site to the legacy project.
 
-Angular uses `<base href="/legacy/">`, and legacy assets resolve from `/legacy/assets/`. No iframe or second server is required in production.
+Angular uses `<base href="/legacy/">`, publishes beneath a `/legacy/` artifact directory, and resolves assets from `/legacy/assets/`.
 
 ## Isolation
 
-- Angular dependencies and configuration live only in `legacy/`.
+- Angular dependencies and configuration live in the `intuise-legacy` repository.
 - Astro does not import Angular code or CSS.
-- The legacy bundle does not alter the Astro homepage, design system, or global styles.
-- The legacy project has its own `package.json` and lockfile.
-
-## Assets and provenance
-
-The legacy assets reproduce files present in the previously public `main` snapshot. They are kept inside `legacy/src/assets/` to avoid collisions with current Astro assets. A follow-up review is still required for third-party marks, testimonial imagery, client/project permissions, and photography provenance.
+- Either project can deploy and roll back without rebuilding the other.
+- The public route remains on `intuise.com`, so users do not cross origins.
 
 ## Validation
 
-Run `npm run validate`. The command checks the Astro application, tests it, builds both projects, and assembles the final output. Then run `npm run preview` and verify `/`, `/design-system/`, and `/legacy/`.
+- Run `npm run validate` in this repository for the Astro application.
+- Run `npm run build` in `intuise-legacy` for the Angular application.
+- Use Netlify draft deploys to verify `/`, `/design-system/`, `/legacy/`, the Angular JavaScript bundle, and `/legacy/assets/` before production.
 
 ## Maintenance
 
-Update the archive from within `legacy/`. Do not add Angular dependencies to the root application. If the Angular output path changes, update `scripts/assemble-legacy.mjs`.
-
-To remove the route, delete `legacy/`, remove the legacy build and assembly scripts from the root `package.json`, delete `scripts/assemble-legacy.mjs`, and rebuild.
+Make all legacy changes in `zain3x/intuise-legacy`. Keep the Netlify path contract and Angular base path aligned at `/legacy/`.
 
 ## Deferred work
 

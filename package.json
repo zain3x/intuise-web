@@ -9,10 +9,8 @@
   "packageManager": "npm@11.3.0",
   "scripts": {
     "dev": "astro dev",
-    "build": "npm run build:astro && npm run build:legacy && npm run assemble:legacy",
+    "build": "astro build",
     "build:astro": "astro build",
-    "build:legacy": "npm ci --prefix legacy --no-audit --no-fund && npm run build --prefix legacy",
-    "assemble:legacy": "node scripts/assemble-legacy.mjs",
     "preview": "astro preview",
     "check": "astro check",
     "lint": "eslint .",

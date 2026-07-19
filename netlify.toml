@@ -12,6 +12,18 @@
 [context.branch-deploy]
   command = "npm run build"
 
+[[redirects]]
+  from = "/legacy"
+  to = "https://intuise-legacy.netlify.app/legacy/"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/legacy/*"
+  to = "https://intuise-legacy.netlify.app/legacy/:splat"
+  status = 200
+  force = true
+
 [[headers]]
   for = "/*"
   [headers.values]

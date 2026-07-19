@@ -2,8 +2,8 @@
 
 ## Unreleased
 
-- Restored the pre-migration Angular site as an independently built `legacy/` subproject served from `/legacy/`.
-- Added a combined Astro and Angular build that assembles the legacy bundle beneath `dist/legacy/`.
+- Moved the pre-migration Angular site to the independent `zain3x/intuise-legacy` repository and Netlify project.
+- Added route-level Netlify composition for `/legacy/` while keeping Astro and Angular deployments independent.
 
 ## Unreleased — Angular to Astro migration
 
