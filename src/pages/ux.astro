@@ -1,0 +1,86 @@
+---
+import EditorialLayout from "../layouts/EditorialLayout.astro";
+import { solutionOptions, process } from "../data/site";
+import { capabilities, productContexts } from "../data/discovery";
+import { company } from "../data/ecosystem";
+import { buildProjectMailto } from "../utils/mailto";
+---
+
+<EditorialLayout
+  title="UX, product design and frontend services"
+  eyebrow="Intuise UX"
+  heading="From product intent to working interfaces."
+  description="Product strategy, UX/UI design, design systems, and frontend implementation for intuitive, maintainable digital products."
+  service
+>
+  <Fragment slot="actions"
+    ><a class="button button-dark" href={buildProjectMailto()}
+      >Discuss a project ↗</a
+    ><a href="/fix-your-ui-ux/">Have an existing product? Fix your UI/UX</a
+    ></Fragment
+  >
+  <section id="capabilities" class="section section-paper">
+    <div class="split">
+      <div>
+        <h2>What you can hire Intuise for</h2><p>{productContexts}</p><p>
+          {company.approach}
+        </p>
+      </div><ul class="ruled-list">
+        {
+          capabilities.map((c) => (
+            <li>
+              <>
+                <p>{c.detail}</p>
+                {c.href !== "/ux/#capabilities" && (
+                  <a href={c.href}>Explore {c.name}</a>
+                )}
+              </>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+  <section id="directions" class="section section-fog">
+    <div class="split">
+      <div>
+        <h2>What are you building?</h2><p>
+          Start with the closest direction, then shape the work around your
+          actual constraints.
+        </p><a href="/work/">See selected work</a>
+      </div><div>
+        {
+          solutionOptions.map((o) => (
+            <article class="editorial-row">
+              <>
+                <h3>{o.label}</h3>
+                <p>{o.problem}</p>
+                <p>{o.direction}</p>
+                <a href={buildProjectMailto(o.label)}>
+                  Discuss this direction ↗
+                </a>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div class="split">
+      <h2>One connected process.</h2><ol class="ruled-list">
+        {
+          process.map(([n, t, d]) => (
+            <li>
+              <>
+                <p class="eyebrow">{n}</p>
+                <h3>{t}</h3>
+                <p>{d}</p>
+              </>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+</EditorialLayout>

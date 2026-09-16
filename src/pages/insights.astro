@@ -1,0 +1,41 @@
+---
+import EditorialLayout from "../layouts/EditorialLayout.astro";
+import { insightTopics } from "../data/ecosystem";
+---
+
+<EditorialLayout
+  title="Insights and editorial roadmap"
+  eyebrow="Intuise Insights"
+  heading="Notes behind intuitive systems."
+  description="An editorial roadmap for product decisions, design-to-code practice, and maintainable interfaces. Reviewed articles have not been published yet."
+>
+  <section class="section section-fog">
+    <div class="split">
+      <h2>On the editorial roadmap</h2><div>
+        {
+          insightTopics.map(([t, d]) => (
+            <article class="editorial-row">
+              <>
+                <span class="preview-status">Planned topic</span>
+                <h3>{t}</h3>
+                <p>{d}</p>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div>
+      <h2>Available to read now</h2><p>
+        Explore the current interface principles and first implementation
+        preview.
+      </p><div class="resource-links">
+        <a href="/ai/design-principles/">Design principles</a><a
+          href="/components/action-link/">Action link documentation</a
+        >
+      </div>
+    </div>
+  </section>
+</EditorialLayout>

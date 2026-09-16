@@ -1,0 +1,101 @@
+---
+import EditorialLayout from "../../layouts/EditorialLayout.astro";
+import { work } from "../../data/work";
+import { organizationId } from "../../data/discovery";
+export function getStaticPaths() {
+  return work.map((project) => ({
+    params: { project: project.slug },
+    props: { project },
+  }));
+}
+const { project } = Astro.props;
+const canonical = new URL(project.documentation, "https://intuise.com").href;
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "CreativeWork",
+    "@id": `${canonical}#work`,
+    name: project.title,
+    description: project.description,
+    url: canonical,
+    creator: { "@id": organizationId },
+    image: project.images.map(
+      (i) => new URL(i.src, "https://intuise.com").href,
+    ),
+    about: project.capabilities.map((name) => ({ "@type": "Thing", name })),
+    mainEntityOfPage: { "@id": `${canonical}#webpage` },
+  },
+];
+---
+
+<EditorialLayout
+  title={project.title}
+  eyebrow="Project context"
+  heading={project.title}
+  description={project.description}
+  parent={{ name: "Work", href: "/work/" }}
+  {jsonLd}
+>
+  <section class="section section-fog">
+    <div class="split">
+      <h2>Context and scope</h2><div>
+        <p>{project.context}</p><h3>Intuise capabilities</h3><p>
+          {project.metadata}
+        </p><ul>{project.capabilities.map((c) => <li>{c}</li>)}</ul>
+      </div>
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div>
+      <h2>Interface evidence</h2><p>
+        The existing portfolio images show the interface direction and scope.
+        Quantified outcomes and a measured before-and-after comparison are not
+        published for this project.
+      </p>{
+        project.images.map((i) => (
+          <figure>
+            <>
+              <>
+                <img
+                  src={i.src}
+                  width={i.width}
+                  height={i.height}
+                  alt={i.alt}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>{i.alt}</figcaption>
+              </>
+            </>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+  <section class="section section-fog">
+    <div>
+      <h2>Related services</h2><div class="resource-links">
+        <a href="/ux/">Product design and frontend implementation</a><a
+          href="/fix-your-ui-ux/">Fix Your UI/UX</a
+        ><a href="/components/">Reusable interface foundations</a><a
+          href="/contact/">Discuss relevant experience</a
+        >
+      </div>
+    </div>
+  </section>
+</EditorialLayout>
+<style>
+  figure {
+    margin: 2rem 0;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  figcaption {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+    color: var(--text-muted);
+  }
+</style>

@@ -13,6 +13,21 @@
   command = "npm run build"
 
 [[redirects]]
+  from = "/sitemap.xml"
+  to = "/sitemap-index.xml"
+  status = 200
+
+[[redirects]]
+  from = "/component-library"
+  to = "/components/"
+  status = 301
+
+[[redirects]]
+  from = "/component-library/"
+  to = "/components/"
+  status = 301
+
+[[redirects]]
   from = "/legacy"
   to = "https://intuise-legacy.netlify.app/legacy/"
   status = 200

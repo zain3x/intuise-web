@@ -1,11 +1,12 @@
 import type { SolutionOption } from '../types/site';
 
 export const navigation = [
-  ['Who we help', '#who-we-help'],
-  ['Selected work', '#work'],
-  ['Solutions', '#solutions'],
-  ['Why Intuise', '#why-intuise'],
-  ['Contact', '#contact'],
+  ['Work', '/work/'],
+  ['Services', '/ux/'],
+  ['Components', '/components/'],
+  ['Ecosystem', '/#ecosystem'],
+  ['About', '/about/'],
+  ['Contact', '/contact/'],
 ] as const;
 
 export const audiences = [

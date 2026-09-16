@@ -1,0 +1,131 @@
+---
+import { ecosystem } from "../data/ecosystem";
+---
+
+<section
+  id="ecosystem"
+  class="section section-fog"
+  aria-labelledby="ecosystem-title"
+>
+  <header class="section-heading">
+    <div>
+      <p class="eyebrow">Intuise Ecosystem</p><h2 id="ecosystem-title">
+        One practice.<br />More ways to build.
+      </h2>
+    </div>
+    <p>
+      Product design and frontend remain at the center. Focused services,
+      reusable foundations, and our own experiments grow from the same way of
+      thinking.
+    </p>
+  </header>
+  <div class="ecosystem-composition">
+    {
+      ecosystem.map((item, index) => (
+        <article
+          id={item.id === "games" ? "games" : undefined}
+          class:list={["ecosystem-branch", `branch-${item.id}`]}
+        >
+          <div class="branch-index">
+            <>
+              <span>
+                0{index + 1} / {item.role}
+              </span>
+              <span>{item.status}</span>
+            </>
+          </div>
+          <>
+            <h3>{item.name}</h3>
+            <p>{item.description}</p>
+          </>
+          <a href={item.href}>
+            {item.cta} <span aria-hidden="true">↗</span>
+          </a>
+        </article>
+      ))
+    }
+  </div>
+</section>
+<style>
+  .ecosystem-composition {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: clamp(2rem, 6vw, 6rem);
+  }
+  .ecosystem-branch {
+    border-top: 1px solid var(--border-strong);
+    padding: 2rem 0 2.5rem;
+  }
+  .branch-index {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+  h3 {
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    letter-spacing: -0.045em;
+    margin: 1.5rem 0 0.8rem;
+  }
+  p {
+    max-width: 48ch;
+    line-height: 1.75;
+    color: var(--text-muted);
+  }
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 2rem;
+    min-height: 44px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-underline-offset: 5px;
+  }
+  .branch-fix {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    align-self: start;
+    padding: 2rem;
+    background: var(--surface-paper);
+    border-top: 3px solid var(--brand-primary-deep);
+  }
+  .branch-fix h3 {
+    max-width: 9ch;
+    font-size: var(--step-3);
+    line-height: 1.05;
+  }
+  .branch-games {
+    grid-column: 2;
+    margin-top: 1rem;
+    padding: 2rem;
+    background: #0b1420;
+    color: var(--text-on-dark);
+  }
+  .branch-games p,
+  .branch-games .branch-index {
+    color: var(--text-muted-dark);
+  }
+  .branch-games a {
+    color: var(--brand-primary-soft);
+  }
+  @media (max-width: 700px) {
+    .ecosystem-composition {
+      grid-template-columns: 1fr;
+    }
+    .branch-fix,
+    .branch-games {
+      grid-column: auto;
+      grid-row: auto;
+    }
+    .branch-fix {
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    .branch-games {
+      padding: 1.5rem;
+    }
+  }
+</style>

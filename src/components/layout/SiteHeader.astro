@@ -5,7 +5,7 @@ import { navigation } from "../../data/site";
 
 <a class="skip-link" href="#main-content">Skip to content</a>
 <header class="site-header">
-  <a class="brand-link" href="#top"><BrandLogo compact /></a>
+  <a class="brand-link" href="/"><BrandLogo compact /></a>
   <nav class="desktop-nav" aria-label="Primary navigation">
     {navigation.map(([label, href]) => <a href={href}>{label}</a>)}
   </nav>
@@ -16,3 +16,18 @@ import { navigation } from "../../data/site";
     </nav>
   </details>
 </header>
+
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>(".mobile-nav");
+  menu?.querySelectorAll("a").forEach((link) =>
+    link.addEventListener("click", () => {
+      menu.open = false;
+    }),
+  );
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menu?.open) {
+      menu.open = false;
+      menu.querySelector("summary")?.focus();
+    }
+  });
+</script>

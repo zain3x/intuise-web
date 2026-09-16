@@ -1,0 +1,16 @@
+---
+import EditorialLayout from "../layouts/EditorialLayout.astro";
+import GameStudies from "../components/games/GameStudies.astro";
+---
+
+<EditorialLayout
+  title="Intuise Games"
+  eyebrow="Intuise Games"
+  heading="A little room for play."
+  description="Original games, playful interface studies, and spatial experiments. The experimental side of the same Intuise practice."
+>
+  <a slot="actions" class="button button-dark" href="#games"
+    >Explore the studies â†“</a
+  >
+  <GameStudies exploreHref="https://games.intuise.com" />
+</EditorialLayout>

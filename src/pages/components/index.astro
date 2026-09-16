@@ -1,0 +1,116 @@
+---
+import EditorialLayout from "../../layouts/EditorialLayout.astro";
+import { principles, taxonomy, decisionFlow } from "../../data/ecosystem";
+import { components } from "../../data/components";
+import { buildProjectMailto } from "../../utils/mailto";
+---
+
+<EditorialLayout
+  title="Component Library: responsive, touch-first UI foundations"
+  eyebrow="Intuise Components"
+  heading="Interface foundations designed to survive real products."
+  description="Reusable, responsive interface foundations connecting product decisions with production code. In development, with a first look at the principles and existing website primitives."
+>
+  <Fragment slot="actions"
+    ><a class="button button-dark" href="#previews"
+      >Explore the preview <span aria-hidden="true">↓</span></a
+    ><span class="preview-status">In development</span></Fragment
+  >
+  <section class="section section-fog">
+    <div>
+      <h2>A connected system</h2><ol class="decision-flow">
+        {decisionFlow.map((step) => <li>{step}</li>)}
+      </ol><p>
+        Each layer carries the reasoning behind the interface. Framework-aware
+        implementation can change while the purpose and UX rules stay explicit.
+      </p>
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div class="split">
+      <h2>Principles before pixels.</h2><ul class="ruled-list">
+        {
+          principles.map(([name, body]) => (
+            <li>
+              <>
+                <h3>{name}</h3>
+                <p>{body}</p>
+              </>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+  <section id="previews" class="section section-fog">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Library preview</p><h2>
+          A small, honest starting point.
+        </h2><p>
+          These are documented website implementations, not a public package or
+          a complete cross-platform library.
+        </p>
+      </div><div>
+        {
+          components.map((c) => (
+            <article class="editorial-row">
+              <>
+                <span class="preview-status">{c.status}</span>
+                <h3>{c.name}</h3>
+                <p>{c.content.purpose}</p>
+                <a href={c.documentation}>
+                  Read {c.name.toLowerCase()} documentation ↗
+                </a>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div class="split">
+      <div>
+        <h2>Preview taxonomy</h2><p>
+          The intended structure as reviewed components become available.
+        </p>
+      </div><div class="taxonomy">
+        {
+          taxonomy.map((t) => (
+            <div>
+              {t}
+              <small>
+                {components.some((c) => c.category === t)
+                  ? "1 implementation preview"
+                  : "Planned category"}
+              </small>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section section-fog">
+    <div>
+      <p class="eyebrow">For people and code agents</p><h2>
+        The same source, in a readable form.
+      </h2><p>
+        Purpose, states, responsive behavior, accessibility rules, and
+        implementation notes sit alongside each preview. Machine-readable
+        resources expose the same content. Package installation, MCP access, and
+        paid tooling are not available yet.
+      </p><div class="resource-links">
+        <a href="/components.json">Component registry</a><a href="/tokens.json"
+          >Website tokens</a
+        ><a href="/patterns.json">UX patterns</a><a href="/ai/"
+          >Knowledge index</a
+        >
+      </div><a
+        class="button button-dark"
+        href={buildProjectMailto("Interface systems and components")}
+        >Discuss an interface system ↗</a
+      >
+    </div>
+  </section>
+</EditorialLayout>

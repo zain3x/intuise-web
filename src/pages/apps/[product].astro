@@ -1,0 +1,28 @@
+---
+import EditorialLayout from "../../layouts/EditorialLayout.astro";
+import { products } from "../../data/ecosystem";
+export function getStaticPaths() {
+  return products.map((product) => ({
+    params: { product: product.slug },
+    props: { product },
+  }));
+}
+const { product } = Astro.props;
+---
+
+<EditorialLayout
+  title={product.name}
+  eyebrow={product.name}
+  heading={product.name}
+  description={product.description}
+  parent={{ name: "Apps", href: "/apps/" }}
+  ><Fragment slot="actions"
+    ><span class="preview-status">{product.status}</span>{
+      product.url && (
+        <a class="button button-dark" href={product.url}>
+          Visit {product.name} ↗
+        </a>
+      )
+    }</Fragment
+  ></EditorialLayout
+>

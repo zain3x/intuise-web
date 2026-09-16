@@ -1,0 +1,33 @@
+---
+import EditorialLayout from "../../layouts/EditorialLayout.astro";
+import { knowledge } from "../../data/knowledge";
+---
+
+<EditorialLayout
+  title="Public knowledge index"
+  eyebrow="Intuise knowledge"
+  heading="A shared source of understanding."
+  description="Concise, public facts about Intuise for people, search engines, and code agents. The same information supports our website and machine-readable resources."
+>
+  <section class="section section-fog">
+    <div>
+      {
+        knowledge.map((k) => (
+          <article class="editorial-row">
+            <>
+              <h2>{k.title}</h2>
+              <p>{k.description}</p>
+              <a href={`/ai/${k.slug}/`}>Read {k.title.toLowerCase()} ↗</a>
+            </>
+          </article>
+        ))
+      }<div class="resource-links">
+        <a href="/llms.txt">llms.txt</a><a href="/components.json"
+          >components.json</a
+        ><a href="/tokens.json">tokens.json</a><a href="/patterns.json"
+          >patterns.json</a
+        >
+      </div>
+    </div>
+  </section>
+</EditorialLayout>

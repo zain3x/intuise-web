@@ -1,0 +1,96 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+import "../styles/editorial.css";
+import { organizationId, websiteId } from "../data/discovery";
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  heading: string;
+  service?: boolean;
+  jsonLd?: Record<string, unknown>[];
+  parent?: { name: string; href: string };
+}
+const {
+  title,
+  description,
+  eyebrow,
+  heading,
+  service = false,
+  parent,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, "https://intuise.com").href;
+const crumbs = [
+  { name: "Home", href: "/" },
+  ...(parent ? [parent] : []),
+  { name: eyebrow, href: Astro.url.pathname },
+];
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: title,
+    description,
+    url: canonical,
+    "@id": `${canonical}#webpage`,
+    isPartOf: { "@id": websiteId },
+    about: { "@id": organizationId },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: crumbs.map((c, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      name: c.name,
+      item: new URL(c.href, "https://intuise.com").href,
+    })),
+  },
+  ...(service
+    ? [
+        {
+          "@context": "https://schema.org",
+          "@type": "Service",
+          name: eyebrow,
+          description,
+          url: canonical,
+          "@id": `${canonical}#service`,
+          serviceType: eyebrow,
+          provider: { "@id": organizationId },
+        },
+      ]
+    : []),
+  ...(Astro.props.jsonLd ?? []),
+];
+---
+
+<BaseLayout title={`${title} | Intuise`} {description} {canonical} {jsonLd}>
+  <div class="editorial-page">
+    <header class="section section-paper editorial-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        {
+          crumbs.map((c, i) =>
+            i === crumbs.length - 1 ? (
+              <span aria-current="page">{c.name}</span>
+            ) : (
+              <>
+                <>
+                  <a href={c.href}>{c.name}</a>
+                  <span aria-hidden="true">/</span>
+                </>
+              </>
+            ),
+          )
+        }
+      </nav>
+      <div>
+        <p class="eyebrow">{eyebrow}</p><h1>{heading}</h1><p
+          class="editorial-lede"
+        >
+          {description}
+        </p><div class="editorial-actions"><slot name="actions" /></div>
+      </div>
+    </header>
+    <slot />
+  </div>
+</BaseLayout>

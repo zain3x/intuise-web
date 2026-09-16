@@ -1,0 +1,51 @@
+---
+import EditorialLayout from "../../layouts/EditorialLayout.astro";
+import { products } from "../../data/ecosystem";
+import { buildProjectMailto } from "../../utils/mailto";
+---
+
+<EditorialLayout
+  title="Intuise Apps"
+  eyebrow="Intuise Apps"
+  heading="Product thinking, put into practice."
+  description="Applications and experiments built using the same product-thinking and interface-system principles as our studio work."
+>
+  <span slot="actions" class="preview-status">In development</span>
+  <section class="section section-fog">
+    <div class="split">
+      <h2>Our own products. The same principles.</h2><div>
+        <p>
+          Intuise develops applications alongside its client work, exploring how
+          clearer workflows and reusable interfaces hold up in everyday use.
+        </p>{
+          products.length ? (
+            products.map((p) => (
+              <article class="editorial-row">
+                <>
+                  <h3>{p.name}</h3>
+                  <p>{p.description}</p>
+                  <a href={`/apps/${p.slug}/`}>Explore {p.name}</a>
+                </>
+              </article>
+            ))
+          ) : (
+            <>
+              <>
+                <h3>Public product pages are being prepared.</h3>
+                <p>
+                  There are no product releases listed here yet. We will add
+                  details and availability as each product is ready to share.
+                </p>
+              </>
+            </>
+          )
+        }<div class="resource-links">
+          <a href="/components/">Explore the interface foundations</a><a
+            href={buildProjectMailto("Intuise Apps")}
+            >Ask about Intuise Apps ↗</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+</EditorialLayout>

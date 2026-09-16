@@ -1,0 +1,54 @@
+---
+import EditorialLayout from "../layouts/EditorialLayout.astro";
+import { company, ecosystem, principles } from "../data/ecosystem";
+import { buildProjectMailto } from "../utils/mailto";
+---
+
+<EditorialLayout
+  title="About Intuise"
+  eyebrow="About Intuise"
+  heading="Clear interfaces. Thoughtful systems."
+  description="Meet Intuise UX Solution, an AI-first product design and frontend engineering studio in Jakarta, connecting client work with reusable systems and product experiments."
+>
+  <a slot="actions" class="button button-dark" href={buildProjectMailto()}
+    >Discuss a project ↗</a
+  >
+  <section class="section section-fog">
+    <div class="split">
+      <h2>A studio with room to build.</h2><div>
+        <p>
+          Based in Jakarta and working remotely, Intuise connects product
+          decisions with frontend implementation. The practice extends into
+          reusable interface systems, applications, and experimental game
+          experiences.
+        </p><p>{company.approach}</p>{
+          ecosystem.map((e) => (
+            <article class="editorial-row">
+              <>
+                <h3>{e.name}</h3>
+                <p>{e.description}</p>
+                <a href={e.href}>{e.cta} ↗</a>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div class="split">
+      <h2>How we think about interfaces.</h2><ul class="ruled-list">
+        {
+          principles.map(([t, d]) => (
+            <li>
+              <>
+                <h3>{t}</h3>
+                <p>{d}</p>
+              </>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+</EditorialLayout>

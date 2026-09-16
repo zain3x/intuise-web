@@ -1,0 +1,63 @@
+---
+import EditorialLayout from "../../layouts/EditorialLayout.astro";
+import { components, documentationSections } from "../../data/components";
+export function getStaticPaths() {
+  return components.map((component) => ({
+    params: { component: component.slug },
+    props: { component },
+  }));
+}
+const { component } = Astro.props;
+---
+
+<EditorialLayout
+  title={`${component.name} component preview`}
+  eyebrow={component.name}
+  heading={component.name}
+  description={component.content.purpose}
+  parent={{ name: "Components", href: "/components/" }}
+>
+  <span slot="actions" class="preview-status"
+    >{component.status} · Website implementation</span
+  >
+  <section class="section section-fog">
+    <div>
+      <h2>Implementation preview</h2><p>
+        Both examples navigate to the Components overview.
+      </p><div class="component-demo">
+        <a class="button button-signal" href="/components/"
+          >Explore components <span aria-hidden="true">↗</span></a
+        ><a class="button button-dark" href="/components/"
+          >Explore components <span aria-hidden="true">↗</span></a
+        >
+      </div>
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div>
+      <nav class="doc-navigation" aria-label="On this page">
+        {
+          documentationSections.map(([key, label]) => (
+            <a href={`#${key}`}>{label}</a>
+          ))
+        }
+      </nav>{
+        documentationSections.map(([key, label]) => (
+          <section
+            id={key}
+            class="doc-section"
+            aria-labelledby={`${key}-title`}
+          >
+            <>
+              <h2 id={`${key}-title`}>{label}</h2>
+              <p>{component.content[key]}</p>
+              {key === "designTokens" && (
+                <a href="/tokens.json">Read current website token values</a>
+              )}
+            </>
+          </section>
+        ))
+      }<a href="/components.json">Read the same documentation as JSON</a>
+    </div>
+  </section>
+</EditorialLayout>

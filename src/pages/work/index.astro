@@ -1,0 +1,39 @@
+---
+import EditorialLayout from "../../layouts/EditorialLayout.astro";
+import { work } from "../../data/work";
+---
+
+<EditorialLayout
+  title="Selected work and case studies"
+  eyebrow="Selected work"
+  heading="Interfaces shaped around real work."
+  description="Explore Intuise's public logistics website and content-operations interface work, with project context, capabilities, and existing interface evidence."
+>
+  <section class="section section-fog">
+    <div>
+      {
+        work.map((entry) => (
+          <article class="editorial-row">
+            <>
+              <>
+                <p class="eyebrow">{entry.metadata}</p>
+                <h2>{entry.title}</h2>
+                <p>{entry.description}</p>
+                <a href={entry.documentation}>Read {entry.title} ↗</a>
+              </>
+            </>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div>
+      <h2>Bring us your product challenge.</h2><div class="resource-links">
+        <a href="/ux/">Explore UX and frontend services</a><a
+          href="/fix-your-ui-ux/">Review an existing interface</a
+        >
+      </div>
+    </div>
+  </section>
+</EditorialLayout>

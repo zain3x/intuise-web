@@ -1,0 +1,849 @@
+---
+import { intuiseGamesContent as content } from "../../data/games";
+
+interface Props {
+  exploreHref: string;
+}
+
+const { exploreHref } = Astro.props;
+---
+
+<section
+  id="games"
+  class="section section-dark games-showcase"
+  aria-labelledby="games-title"
+>
+  <div class="games-inner">
+    <div class="games-hero">
+      <header class="games-intro">
+        <p class="eyebrow">{content.eyebrow}</p>
+        <h2 id="games-title">{content.heading}</h2>
+        <p class="games-lede">{content.supportingCopy}</p>
+        <p class="games-statement">{content.brandStatement}</p>
+        <a class="button button-signal" href={exploreHref}>
+          Explore Intuise Games <span aria-hidden="true">&#8599;</span>
+        </a>
+        <ul class="device-range" aria-label="Interface range">
+          {content.deviceRange.map((device) => <li>{device}</li>)}
+        </ul>
+      </header>
+
+      <div class="games-stage" aria-label="Intuise Games interface studies">
+        <div class="spatial-plane" aria-hidden="true">
+          <span>Concept Exploration</span>
+          <div class="spatial-world">
+            <img
+              src="/assets/games/kanagotchi-world-night.png"
+              width="1080"
+              height="1920"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <i></i><i></i><i></i>
+          </div>
+        </div>
+
+        <article
+          class="portal-device"
+          aria-label="Mobile game portal direction"
+        >
+          <div class="portal-topline">
+            <span>Intuise Games</span><span>Portal direction</span>
+          </div>
+          <div class="portal-feature">
+            <img
+              src="/assets/games/kanagotchi-axolotl-art.webp"
+              width="640"
+              height="960"
+              alt="Pixel-art axolotl character expressions from the Kanagotchi prototype"
+              loading="lazy"
+              decoding="async"
+            />
+            <div>
+              <span>Original game prototype</span>
+              <strong>Kanagotchi</strong>
+              <small>Prototype build / not a browser release</small>
+            </div>
+          </div>
+          <div class="portal-actions" aria-hidden="true">
+            <span>Prototype library</span><b>Explore</b>
+          </div>
+          <div class="portal-selection">
+            <span>
+              <img
+                src="/assets/games/kanagotchi-axolotl-icon.png"
+                width="64"
+                height="64"
+                alt=""
+              />
+            </span>
+            <span>
+              <img
+                src="/assets/games/kanagotchi-rabbit-icon.png"
+                width="64"
+                height="64"
+                alt=""
+              />
+            </span>
+            <p>Original builds<br /><small>and interaction studies</small></p>
+          </div>
+        </article>
+
+        <figure class="gameplay-preview">
+          <img
+            class="gameplay-world"
+            src="/assets/games/kanagotchi-world-night.png"
+            width="1080"
+            height="1920"
+            alt="Night world background from the Kanagotchi game prototype"
+            loading="lazy"
+            decoding="async"
+          />
+          <img
+            class="gameplay-character"
+            src="/assets/games/kanagotchi-axolotl-icon.png"
+            width="64"
+            height="64"
+            alt="Axolotl character icon from the Kanagotchi prototype"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>
+            <span>Prototype build</span><strong>Original game artwork</strong>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="games-story">
+      <article class="portal-story" aria-labelledby="portal-title">
+        <p class="eyebrow">{content.portal.eyebrow}</p>
+        <h3 id="portal-title">{content.portal.title}</h3>
+        <p>{content.portal.description}</p>
+        <ol class="games-values">
+          {
+            content.portal.values.map(([number, title, description]) => (
+              <li>
+                <span>{number}</span>
+                <div>
+                  <strong>{title}</strong>
+                  <p>{description}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </article>
+
+      <article class="spatial-story" aria-labelledby="spatial-title">
+        <div
+          class="spatial-concept"
+          role="img"
+          aria-label="Spatial UX concept assembled from existing Kanagotchi game artwork"
+        >
+          <div class="concept-depth concept-depth-back">
+            <span>World</span>
+          </div>
+          <div class="concept-depth concept-depth-main">
+            <img
+              src="/assets/games/kanagotchi-world-night.png"
+              width="1080"
+              height="1920"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              class="concept-pet"
+              src="/assets/games/kanagotchi-axolotl-icon.png"
+              width="64"
+              height="64"
+              alt=""
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+          <div class="concept-depth concept-depth-control">
+            <span>Game state</span><i></i><i></i>
+          </div>
+          <span class="concept-label">Spatial UX Concept</span>
+        </div>
+        <div class="spatial-copy">
+          <p class="eyebrow">{content.spatial.eyebrow}</p>
+          <p class="spatial-metadata">{content.spatial.metadata}</p>
+          <h3 id="spatial-title">{content.spatial.title}</h3>
+          <p>{content.spatial.description}</p>
+          <ul
+            class="spatial-capabilities"
+            aria-label="Spatial study capabilities"
+          >
+            {
+              content.spatial.capabilities.map((capability) => (
+                <li>{capability}</li>
+              ))
+            }
+          </ul>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .games-showcase {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--border-dark);
+    background:
+      radial-gradient(
+        circle at 82% 18%,
+        rgba(19, 198, 212, 0.13),
+        transparent 30rem
+      ),
+      var(--ink);
+  }
+
+  .games-inner {
+    display: grid;
+    gap: clamp(4rem, 8vw, 7rem);
+  }
+
+  .games-hero {
+    display: grid;
+    grid-template-columns: minmax(20rem, 0.7fr) minmax(34rem, 1fr);
+    gap: clamp(3rem, 7vw, 7rem);
+    align-items: center;
+  }
+
+  .games-intro h2 {
+    max-width: 12ch;
+    margin: 1rem 0 1.5rem;
+    font-family: var(--font-display);
+    font-size: var(--step-3);
+    font-weight: 650;
+    line-height: 0.98;
+    letter-spacing: -0.055em;
+  }
+
+  .games-lede,
+  .games-statement {
+    max-width: 40rem;
+    color: var(--text-muted-dark);
+    line-height: 1.75;
+  }
+
+  .games-statement {
+    margin: 1rem 0 2rem;
+    padding-left: 1rem;
+    border-left: 1px solid var(--brand-primary);
+    font-size: var(--type-small);
+  }
+
+  .games-intro .button {
+    width: min(100%, 18rem);
+  }
+
+  .device-range {
+    margin: 2rem 0 0;
+    padding: 1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    border-top: 1px solid var(--border-dark);
+    list-style: none;
+    color: var(--text-muted-dark);
+    font-size: var(--type-small);
+  }
+
+  .device-range li + li::before {
+    content: "/";
+    margin-right: 1.5rem;
+    color: var(--brand-primary);
+  }
+
+  .games-stage {
+    position: relative;
+    min-height: clamp(37rem, 54vw, 48rem);
+    overflow: hidden;
+    border: 1px solid var(--border-dark);
+    background:
+      linear-gradient(rgba(19, 198, 212, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(19, 198, 212, 0.08) 1px, transparent 1px),
+      #0c1715;
+    background-size: 3rem 3rem;
+    isolation: isolate;
+  }
+
+  .spatial-plane {
+    position: absolute;
+    z-index: 0;
+    top: 7%;
+    right: -6%;
+    width: 71%;
+    height: 41%;
+    padding: 1rem;
+    border: 1px solid rgba(245, 243, 235, 0.2);
+    background: rgba(16, 33, 30, 0.86);
+    transform: perspective(60rem) rotateY(-9deg) translateZ(-1rem);
+  }
+
+  .spatial-plane > span,
+  .portal-topline,
+  .gameplay-preview figcaption span,
+  .concept-label {
+    color: var(--brand-primary-soft);
+    font-size: 0.58rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .spatial-world {
+    position: relative;
+    height: calc(100% - 1.5rem);
+    margin-top: 0.75rem;
+    overflow: hidden;
+    background: #172c4e;
+  }
+
+  .spatial-world img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    opacity: 0.62;
+  }
+
+  .spatial-world i {
+    position: absolute;
+    width: 16%;
+    aspect-ratio: 1.6;
+    border: 1px solid rgba(245, 243, 235, 0.55);
+    background: rgba(8, 18, 16, 0.7);
+  }
+
+  .spatial-world i:nth-of-type(1) {
+    top: 18%;
+    left: 18%;
+  }
+  .spatial-world i:nth-of-type(2) {
+    top: 38%;
+    left: 43%;
+  }
+  .spatial-world i:nth-of-type(3) {
+    top: 21%;
+    right: 12%;
+  }
+
+  .portal-device {
+    position: absolute;
+    z-index: 3;
+    left: 8%;
+    bottom: 5%;
+    width: min(43%, 21rem);
+    min-height: 72%;
+    padding: 0.75rem;
+    overflow: hidden;
+    border: 1px solid rgba(245, 243, 235, 0.45);
+    border-radius: 2rem;
+    background: #f3f0e6;
+    color: var(--ink);
+    box-shadow: 0 2.5rem 5rem rgba(0, 0, 0, 0.48);
+  }
+
+  .portal-topline {
+    min-height: 2.75rem;
+    padding: 0.25rem 0.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #335653;
+  }
+
+  .portal-feature {
+    position: relative;
+    min-height: 18rem;
+    overflow: hidden;
+    border-radius: 1.25rem;
+    background: #ef18bd;
+  }
+
+  .portal-feature > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 15%;
+  }
+
+  .portal-feature::after {
+    content: "";
+    position: absolute;
+    inset: 38% 0 0;
+    background: linear-gradient(transparent, rgba(8, 18, 16, 0.92));
+  }
+
+  .portal-feature div {
+    position: absolute;
+    z-index: 1;
+    inset: auto 1rem 1rem;
+    display: grid;
+    gap: 0.25rem;
+    color: #fff;
+  }
+
+  .portal-feature span,
+  .portal-feature small {
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .portal-feature strong {
+    font-family: var(--font-display);
+    font-size: 1.65rem;
+  }
+
+  .portal-actions {
+    min-height: 3.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(8, 18, 16, 0.18);
+    font-size: 0.72rem;
+  }
+
+  .portal-actions b {
+    padding: 0.65rem 0.8rem;
+    background: var(--brand-primary);
+  }
+
+  .portal-selection {
+    min-height: 5rem;
+    display: grid;
+    grid-template-columns: 2.8rem 2.8rem 1fr;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .portal-selection > span {
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border: 1px solid rgba(8, 18, 16, 0.18);
+    background: #fff;
+  }
+
+  .portal-selection img {
+    width: 80%;
+    image-rendering: pixelated;
+  }
+  .portal-selection p {
+    margin: 0;
+    font-size: 0.68rem;
+    line-height: 1.25;
+  }
+  .portal-selection small {
+    color: #5f6d6a;
+  }
+
+  .gameplay-preview {
+    position: absolute;
+    z-index: 2;
+    right: 4%;
+    bottom: 10%;
+    width: 55%;
+    height: 42%;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid rgba(245, 243, 235, 0.35);
+    background: #172c4e;
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.38);
+  }
+
+  .gameplay-world {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 34%;
+  }
+
+  .gameplay-character {
+    position: absolute;
+    left: 48%;
+    bottom: 21%;
+    width: clamp(3rem, 8vw, 5.5rem);
+    image-rendering: pixelated;
+    transform: translateX(-50%);
+    filter: drop-shadow(0 0.6rem 0 rgba(0, 0, 0, 0.2));
+  }
+
+  .gameplay-preview figcaption {
+    position: absolute;
+    inset: auto 0 0;
+    padding: 0.8rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    background: rgba(8, 18, 16, 0.88);
+  }
+
+  .gameplay-preview figcaption strong {
+    font-size: 0.72rem;
+  }
+
+  .games-story {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(32rem, 1.18fr);
+    border-top: 1px solid var(--border-dark);
+  }
+
+  .portal-story,
+  .spatial-story {
+    padding-top: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .portal-story {
+    padding-right: clamp(2rem, 5vw, 5rem);
+  }
+
+  .portal-story h3,
+  .spatial-copy h3 {
+    margin: 0.9rem 0 1.25rem;
+    font-family: var(--font-display);
+    font-size: var(--step-2);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+
+  .portal-story > p:not(.eyebrow),
+  .spatial-copy > p:not(.eyebrow):not(.spatial-metadata) {
+    color: var(--text-muted-dark);
+    line-height: 1.7;
+  }
+
+  .games-values {
+    margin: 2.5rem 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid var(--border-dark);
+  }
+
+  .games-values li {
+    padding: 1rem 0;
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border-dark);
+  }
+
+  .games-values li > span {
+    color: var(--brand-primary);
+    font-family: monospace;
+    font-size: var(--type-small);
+  }
+
+  .games-values strong {
+    font-size: var(--type-small);
+  }
+  .games-values p {
+    margin: 0.35rem 0 0;
+    color: var(--text-muted-dark);
+    font-size: var(--type-small);
+    line-height: 1.55;
+  }
+
+  .spatial-story {
+    padding-left: clamp(2rem, 5vw, 5rem);
+    display: grid;
+    grid-template-columns: minmax(18rem, 1.1fr) minmax(16rem, 0.9fr);
+    gap: clamp(2rem, 4vw, 4rem);
+    border-left: 1px solid var(--border-dark);
+  }
+
+  .spatial-concept {
+    position: relative;
+    min-height: 30rem;
+    overflow: hidden;
+    background:
+      radial-gradient(
+        circle at 50% 48%,
+        rgba(19, 198, 212, 0.17),
+        transparent 45%
+      ),
+      #0b1412;
+  }
+
+  .concept-depth {
+    position: absolute;
+    border: 1px solid rgba(245, 243, 235, 0.28);
+    background: rgba(16, 33, 30, 0.82);
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.32);
+  }
+
+  .concept-depth-back {
+    top: 16%;
+    left: 4%;
+    width: 35%;
+    height: 28%;
+    padding: 0.7rem;
+    color: var(--text-muted-dark);
+    font-size: 0.65rem;
+    transform: perspective(50rem) rotateY(14deg) translateZ(-2rem);
+  }
+
+  .concept-depth-main {
+    z-index: 2;
+    inset: 18% 18% 14% 18%;
+    overflow: hidden;
+  }
+
+  .concept-depth-main > img:first-child {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 28%;
+  }
+
+  .concept-pet {
+    position: absolute;
+    left: 50%;
+    bottom: 18%;
+    width: 20%;
+    image-rendering: pixelated;
+    transform: translateX(-50%);
+  }
+
+  .concept-depth-control {
+    z-index: 3;
+    right: 3%;
+    bottom: 20%;
+    width: 32%;
+    min-height: 7rem;
+    padding: 0.75rem;
+    color: var(--text-muted-dark);
+    font-size: 0.65rem;
+    transform: perspective(50rem) rotateY(-12deg) translateZ(1rem);
+  }
+
+  .concept-depth-control i {
+    display: block;
+    height: 0.35rem;
+    margin-top: 1rem;
+    background: var(--brand-primary);
+  }
+
+  .concept-depth-control i:last-child {
+    width: 65%;
+  }
+
+  .concept-label {
+    position: absolute;
+    z-index: 4;
+    left: 1rem;
+    bottom: 1rem;
+  }
+
+  .spatial-copy {
+    align-self: center;
+  }
+  .spatial-metadata {
+    margin: 1.2rem 0 0;
+    color: var(--brand-primary);
+    font-size: var(--type-small);
+    font-weight: 700;
+  }
+
+  .spatial-capabilities {
+    margin: 2rem 0 0;
+    padding: 1rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.2rem;
+    border-top: 1px solid var(--border-dark);
+    list-style: none;
+    color: var(--text-muted-dark);
+    font-size: var(--type-small);
+  }
+
+  .spatial-capabilities li::before {
+    content: "";
+    display: inline-block;
+    width: 0.75rem;
+    height: 1px;
+    margin: 0 0.45rem 0.25rem 0;
+    background: var(--brand-primary);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .spatial-plane,
+    .concept-depth {
+      transition: transform 350ms ease;
+    }
+
+    .games-stage:hover .spatial-plane {
+      transform: perspective(60rem) rotateY(-6deg)
+        translate3d(-0.35rem, -0.25rem, 0);
+    }
+
+    .spatial-concept:hover .concept-depth-control {
+      transform: perspective(50rem) rotateY(-8deg)
+        translate3d(-0.2rem, -0.2rem, 1rem);
+    }
+  }
+
+  @media (max-width: 1080px) {
+    .games-hero {
+      grid-template-columns: 1fr;
+    }
+
+    .games-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(17rem, 0.55fr);
+      gap: 0 3rem;
+      align-items: start;
+    }
+
+    .games-intro .eyebrow,
+    .games-intro h2,
+    .games-intro .games-lede {
+      grid-column: 1;
+    }
+
+    .games-intro .games-statement,
+    .games-intro .button,
+    .games-intro .device-range {
+      grid-column: 2;
+    }
+
+    .games-intro .games-statement {
+      grid-row: 1 / span 2;
+      margin-top: 0;
+    }
+    .games-intro .button {
+      grid-row: 3;
+    }
+    .games-intro .device-range {
+      grid-row: 4;
+    }
+
+    .games-stage {
+      min-height: 42rem;
+    }
+
+    .games-story {
+      grid-template-columns: 1fr;
+    }
+
+    .portal-story {
+      padding-right: 0;
+    }
+    .spatial-story {
+      padding-left: 0;
+      border-left: 0;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .games-inner {
+      gap: 4rem;
+    }
+
+    .games-intro {
+      display: block;
+    }
+
+    .games-intro .games-statement {
+      margin-top: 1rem;
+    }
+
+    .games-stage {
+      min-height: 43rem;
+    }
+
+    .spatial-plane {
+      top: 4%;
+      right: -16%;
+      width: 82%;
+      height: 30%;
+    }
+
+    .portal-device {
+      left: 5%;
+      bottom: 4%;
+      width: min(67%, 20rem);
+      min-height: 68%;
+    }
+
+    .gameplay-preview {
+      right: -16%;
+      bottom: 8%;
+      width: 65%;
+      height: 34%;
+    }
+
+    .spatial-story {
+      grid-template-columns: 1fr;
+    }
+
+    .spatial-copy {
+      grid-row: 1;
+    }
+    .spatial-concept {
+      grid-row: 2;
+      min-height: 24rem;
+    }
+  }
+
+  @media (max-width: 430px) {
+    .games-intro h2 {
+      font-size: clamp(2.8rem, 13vw, 4rem);
+    }
+    .games-intro .button {
+      width: 100%;
+    }
+
+    .device-range {
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .device-range li + li::before {
+      margin-right: 0.65rem;
+    }
+
+    .games-stage {
+      min-height: 40rem;
+    }
+
+    .portal-device {
+      left: 4%;
+      width: 74%;
+      border-radius: 1.5rem;
+    }
+
+    .portal-feature {
+      min-height: 16rem;
+    }
+    .portal-selection {
+      grid-template-columns: 2.35rem 2.35rem 1fr;
+    }
+
+    .gameplay-preview {
+      right: -25%;
+      width: 70%;
+    }
+
+    .games-values li {
+      grid-template-columns: 2rem 1fr;
+    }
+    .spatial-concept {
+      min-height: 21rem;
+    }
+  }
+</style>

@@ -1,0 +1,40 @@
+---
+import EditorialLayout from "../../layouts/EditorialLayout.astro";
+import { knowledge } from "../../data/knowledge";
+export function getStaticPaths() {
+  return knowledge.map((topic) => ({
+    params: { topic: topic.slug },
+    props: { topic },
+  }));
+}
+const { topic } = Astro.props;
+---
+
+<EditorialLayout
+  title={`${topic.title}: public knowledge`}
+  eyebrow={topic.title}
+  heading={topic.title}
+  description={topic.description}
+  parent={{ name: "Knowledge", href: "/ai/" }}
+>
+  <section class="section section-paper">
+    <div>
+      {
+        topic.sections.map((s) => (
+          <section class="doc-section">
+            <>
+              <h2>{s.title}</h2>
+              <ul>
+                {s.items.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+            </>
+          </section>
+        ))
+      }<nav class="resource-links" aria-label="Related resources">
+        {topic.links.map((link) => <a href={link.href}>{link.label}</a>)}
+      </nav>
+    </div>
+  </section>
+</EditorialLayout>

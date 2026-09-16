@@ -1,0 +1,54 @@
+---
+import EditorialLayout from "../layouts/EditorialLayout.astro";
+import { company } from "../data/ecosystem";
+import { faqs } from "../data/site";
+import { buildProjectMailto } from "../utils/mailto";
+---
+
+<EditorialLayout
+  title="Contact Intuise: discuss a product or UI/UX challenge"
+  eyebrow="Contact Intuise"
+  heading="What should feel more intuitive?"
+  description="Share what you are building, where the experience gets complicated, and the outcome your team needs. Contact Intuise for UX, product design, and frontend work."
+>
+  <a slot="actions" class="button button-dark" href={buildProjectMailto()}
+    >Email {company.email} ↗</a
+  >
+  <section class="section section-fog">
+    <div class="split">
+      <div>
+        <h2>A useful starting point</h2><p>
+          Based in Jakarta, Indonesia. Working remotely.
+        </p>
+      </div><div>
+        <p>
+          Tell us about your product, the people using it, the current
+          challenge, and your preferred timeline. A short description is enough
+          to start shaping a scope.
+        </p><div class="resource-links">
+          <a href="/fix-your-ui-ux/">Start with a focused UX/UI review</a><a
+            href="/ux/">Explore product and frontend services</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div>
+      <h2>Before we work together</h2><div class="faq-grid">
+        {
+          faqs.map(([question, answer]) => (
+            <details>
+              <>
+                <>
+                  <summary>{question}</summary>
+                  <p>{answer}</p>
+                </>
+              </>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</EditorialLayout>

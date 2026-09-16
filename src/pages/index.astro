@@ -2,7 +2,10 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SolutionFinder from "../components/interactive/SolutionFinder";
 import CaseStudy from "../components/portfolio/CaseStudy.astro";
-import IntuiseGames from "../components/games/IntuiseGames.astro";
+import Ecosystem from "../components/Ecosystem.astro";
+import { insightTopics, company } from "../data/ecosystem";
+import { work } from "../data/work";
+import { organizationId, websiteId } from "../data/discovery";
 import heroBackground from "../assets/hero/background.png";
 import heroForeground from "../assets/hero/frontimage.png";
 import {
@@ -15,32 +18,17 @@ import {
 import { buildProjectMailto } from "../utils/mailto";
 
 const title = "Intuise — Intuitive product experiences, designed and built";
-const description =
-  "Intuise is a UX, product, and frontend studio helping teams turn complex websites, web apps, internal tools, and workflows into intuitive digital systems.";
+const description = company.description;
 const jsonLd = [
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Intuise UX Solution",
-    url: "https://intuise.com/",
-    email: "rindra@intuise.com",
+    "@type": "WebPage",
+    "@id": "https://intuise.com/#webpage",
+    name: title,
     description,
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    name: "Intuise",
-    url: "https://intuise.com/",
-    inLanguage: "en",
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    serviceType:
-      "UX strategy, product design, UX engineering, and frontend implementation",
-    provider: { "@type": "Organization", name: "Intuise UX Solution" },
-    areaServed: "Worldwide",
-    description,
+    url: company.url,
+    isPartOf: { "@id": websiteId },
+    about: { "@id": organizationId },
   },
 ];
 ---
@@ -66,9 +54,9 @@ const jsonLd = [
           <em>Intuitive UI</em> for your app.
         </h1>
         <p class="hero-intro">
-          We help product teams, operations teams, and growing businesses create
-          interfaces that are easier to use, easier to maintain, and ready to
-          grow.
+          We are an AI-first product design and frontend studio helping teams
+          create interfaces that are easier to use, easier to maintain, and
+          ready to grow.
         </p>
         <div class="hero-actions">
           <a class="button button-signal" href="#solutions"
@@ -143,64 +131,16 @@ const jsonLd = [
         outcomes or unapproved product details.
       </p>
     </header>
-    <CaseStudy
-      featured
-      index="01 / 02"
-      eyebrow="Primary featured case study"
-      metadata="Website Design · CMS Experience"
-      title="Santoso Logistic website experience"
-      description="A company website and CMS experience that organizes complex logistics content into a clearer, responsive, SEO-conscious, and maintainable public interface."
-      capabilities={[
-        "Content Structure",
-        "Responsive UI",
-        "CMS Experience",
-        "Maintainability",
-      ]}
-      images={[
-        {
-          src: "/assets/sanlog-logistic.png",
-          width: 300,
-          height: 450,
-          alt: "Santoso Logistic website and content management interface composition",
-          role: "primary",
-        },
-      ]}
-      href={buildProjectMailto("Santoso Logistic case study")}
-      linkLabel="Ask for relevant experience"
-    />
-    <CaseStudy
-      reverse
-      index="02 / 02"
-      eyebrow="Selected work"
-      metadata="Product Design · UI/UX"
-      title="Broadcast-like Content Management Platform"
-      description="A content management platform with broadcast-like workflows for calendar-based scheduling, live events, playlists, now playing, device synchronization, monitoring, app editing, and playback control."
-      capabilities={[
-        "Scheduling",
-        "Live Events",
-        "Playlists",
-        "Now Playing",
-        "Device Sync",
-        "Monitoring",
-        "App Editor",
-      ]}
-      images={[
-        {
-          src: "/assets/content-operations-editor.png",
-          width: 663,
-          height: 418,
-          alt: "Content operations editor with media library, composition canvas, timeline, and playback controls",
-          role: "editor",
-        },
-        {
-          src: "/assets/item-dummy-1.png",
-          width: 300,
-          height: 450,
-          alt: "Monitoring, scheduling, and multi-device management interface overview",
-          role: "overview",
-        },
-      ]}
-    />
+    {
+      work.map((entry) => (
+        <CaseStudy
+          {...entry}
+          href={entry.documentation}
+          linkLabel="Read the project context"
+        />
+      ))
+    }
+    <p><a href="/work/">Explore selected work and case studies ↗</a></p>
   </section>
 
   <section
@@ -237,6 +177,8 @@ const jsonLd = [
       </div></noscript
     >
   </section>
+
+  <Ecosystem />
 
   <section
     id="why-intuise"
@@ -321,8 +263,6 @@ const jsonLd = [
     </ul>
   </section>
 
-  <IntuiseGames exploreHref={buildProjectMailto("Intuise Games exploration")} />
-
   <section
     id="insights"
     class="section section-paper"
@@ -339,28 +279,19 @@ const jsonLd = [
       </p>
     </header>
     <div class="insight-grid">
-      <article>
-        <span>Editorial roadmap</span><h3>
-          Design and code as one decision system
-        </h3><p>
-          How implementation constraints can improve—not dilute—product
-          decisions.
-        </p>
-      </article><article>
-        <span>Editorial roadmap</span><h3>
-          AI speed still needs a human gate
-        </h3><p>
-          Where automation helps, and where judgement must remain accountable.
-        </p>
-      </article><article>
-        <span>Editorial roadmap</span><h3>
-          Performance is part of the interface
-        </h3><p>
-          Why loading, stability, and responsiveness shape trust and
-          comprehension.
-        </p>
-      </article>
+      {
+        insightTopics.map(([title, description]) => (
+          <article>
+            <>
+              <span>Editorial roadmap</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </>
+          </article>
+        ))
+      }
     </div>
+    <p><a href="/insights/">Explore the editorial roadmap ↗</a></p>
   </section>
 
   <section class="section section-fog" aria-labelledby="faq-title">

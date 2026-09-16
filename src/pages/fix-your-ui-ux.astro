@@ -1,0 +1,151 @@
+---
+import EditorialLayout from "../layouts/EditorialLayout.astro";
+import { company } from "../data/ecosystem";
+import { buildProjectMailto } from "../utils/mailto";
+const problems = [
+  "Confusing workflows",
+  "Inconsistent UI",
+  "Cluttered dashboards",
+  "Difficult mobile experiences",
+  "Unclear hierarchy",
+  "Design/code mismatch",
+  "Legacy interface debt",
+  "Usability friction",
+];
+const steps = [
+  [
+    "Show us the product or problem",
+    "Share a URL, a few screens, or a short description of where people get stuck.",
+  ],
+  [
+    "We inspect the experience",
+    "Look at the task, its context, and the current interface.",
+  ],
+  [
+    "Identify the highest-impact issues",
+    "Prioritize the friction that matters for the workflow.",
+  ],
+  [
+    "Propose or redesign the solution",
+    "Review a focused direction before extending the scope.",
+  ],
+  [
+    "Optional frontend implementation",
+    "Carry approved improvements into the existing codebase.",
+  ],
+];
+const scopes = [
+  [
+    "Quick Review",
+    "Focused UX/UI assessment.",
+    "A prioritized issue summary and practical next steps.",
+  ],
+  [
+    "Focused Fix",
+    "One specific flow or interface problem.",
+    "A reviewable design direction for a clearly bounded problem.",
+  ],
+  [
+    "Product Improvement",
+    "Deeper redesign across connected workflows.",
+    "Coherent journeys and interface decisions across the agreed scope.",
+  ],
+  [
+    "Design + Frontend",
+    "Carry approved improvements into implementation.",
+    "Responsive frontend changes, validation, and handover within the agreed scope.",
+  ],
+];
+---
+
+<EditorialLayout
+  title="Fix Your UI/UX: UX audit and interface improvement"
+  eyebrow="Fix Your UI/UX"
+  heading="Your product already works."
+  description="We help make it clearer, easier, and more coherent. Start with the part of your product that gets in the way."
+  service
+>
+  <Fragment slot="actions"
+    ><a class="button button-dark" href={buildProjectMailto("Fix Your UI/UX")}
+      >Show us the problem <span aria-hidden="true">↗</span></a
+    ><a href="#review">See what we review</a></Fragment
+  >
+  <section id="review" class="section section-fog">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Problems we can look at</p><h2>
+          Start where people get stuck.
+        </h2><p>
+          An existing product, one real problem, and a scope we agree together.
+        </p>
+      </div><ul class="ruled-list">{problems.map((p) => <li>{p}</li>)}</ul>
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div class="split">
+      <h2>What happens</h2><ol class="ruled-list">
+        {
+          steps.map(([name, detail], i) => (
+            <li>
+              <>
+                <p class="eyebrow">0{i + 1}</p>
+                <h3>{name}</h3>
+                <p>{detail}</p>
+              </>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+  <section id="scope" class="section section-fog">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Possible engagement levels</p><h2>
+          The scope follows the problem.
+        </h2><p>
+          Deliverables, timing, and cost are agreed after we understand the
+          product.
+        </p>
+      </div><div>
+        {
+          scopes.map(([name, description, outcome]) => (
+            <article class="editorial-row">
+              <>
+                <h3>{name}</h3>
+                <p>{description}</p>
+                <p>{outcome}</p>
+                <a href={buildProjectMailto(`Fix Your UI/UX: ${name}`)}>
+                  Discuss {name.toLowerCase()} <span aria-hidden="true">↗</span>
+                </a>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+  <section class="section section-paper">
+    <div class="split">
+      <div>
+        <h2>Actionable direction, with human judgement.</h2><p>
+          {company.approach}
+        </p>
+      </div><div>
+        <p>
+          We evaluate usability, hierarchy, and interaction issues in your
+          existing UI. Recommendations explain the proposed fix and its
+          implementation implications, so your team has a frontend-ready
+          direction.
+        </p><p>
+          The selected work shows our interface practice; it is not presented as
+          a measured before-and-after result for this service.
+        </p><div class="resource-links">
+          <a href="/work/">See relevant interface work</a><a href="/contact/"
+            >Discuss the problem</a
+          >
+        </div>
+      </div>
+    </div>
+  </section>
+</EditorialLayout>

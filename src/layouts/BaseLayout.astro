@@ -3,6 +3,7 @@ import "../styles/tokens.css";
 import "../styles/global.css";
 import SiteHeader from "../components/layout/SiteHeader.astro";
 import SiteFooter from "../components/layout/SiteFooter.astro";
+import { organizationSchema, websiteSchema } from "../data/discovery";
 
 interface Props {
   title: string;
@@ -16,11 +17,16 @@ interface Props {
 const {
   title,
   description,
-  canonical = "https://intuise.com/",
+  canonical = new URL(Astro.url.pathname, "https://intuise.com").href,
   image = "/assets/Background-2.png",
   jsonLd,
   robots = "index, follow, max-image-preview:large",
 } = Astro.props;
+const structuredData = [
+  organizationSchema,
+  websiteSchema,
+  ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
+];
 ---
 
 <!doctype html>
@@ -58,11 +64,11 @@ const {
       rel="stylesheet"
     />
     {
-      jsonLd && (
+      structuredData && (
         <script
           is:inline
           type="application/ld+json"
-          set:html={JSON.stringify(jsonLd)}
+          set:html={JSON.stringify(structuredData).replace(/</g, "\\u003c")}
         />
       )
     }
